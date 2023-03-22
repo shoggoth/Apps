@@ -12,15 +12,34 @@ struct ItemDetail: View {
     
     var body: some View {
         VStack {
-            Image(item.mainImage)
+            ZStack(alignment:.bottomTrailing) {
+                Image(item.mainImage)
+                    .resizable()
+                    .scaledToFit()
+                
+                Text("Photo: \(item.photoCredit)")
+                    .padding(3)
+                    .background(Color(white: 0, opacity: 0.5))
+                    .cornerRadius(3)
+                    .font(.caption)
+                    .foregroundColor(.white)
+                    .offset(x: -3, y: -3)
+            }
+            
             Text(item.description)
+                .padding()
+            
+            Spacer()
         }
         .navigationTitle(item.name)
+        .navigationBarTitleDisplayMode(.inline)     // Apple recomends only to use the full size title on the top level.
     }
 }
 
 struct ItemDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ItemDetail(item: MenuItem.example)
+        NavigationStack {
+            ItemDetail(item: MenuItem.example)
+        }
     }
 }

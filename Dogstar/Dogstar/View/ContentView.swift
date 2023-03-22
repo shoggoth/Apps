@@ -17,9 +17,7 @@ struct ContentView: View {
                 ForEach(menu) { section in
                     Section(section.name) {
                         ForEach(section.items) { item in
-                            NavigationLink {
-                                ItemDetail(item: item)
-                            } label: {
+                            NavigationLink(value: item) {
                                 ItemRow(item: item)
                             }
                         }
@@ -28,6 +26,7 @@ struct ContentView: View {
             }
             .navigationTitle("Menu")
             .listStyle(.grouped)            // The default is the insetGrouped style
+            .navigationDestination(for: MenuItem.self) { item in ItemDetail(item: item) }
         }
     }
 }
