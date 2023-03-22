@@ -11,6 +11,12 @@
 		FF247D2D29CB40BC00F68D6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D2C29CB40BC00F68D6A /* ContentView.swift */; };
 		FF247D2F29CB40BC00F68D6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF247D2E29CB40BC00F68D6A /* Assets.xcassets */; };
 		FF247D3229CB40BC00F68D6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF247D3129CB40BC00F68D6A /* Preview Assets.xcassets */; };
+		FF247D3B29CB4EBE00F68D6A /* Food.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF247D3A29CB4EBE00F68D6A /* Food.xcassets */; };
+		FF247D3F29CB4F2000F68D6A /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D3C29CB4F2000F68D6A /* Order.swift */; };
+		FF247D4029CB4F2000F68D6A /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = FF247D3D29CB4F2000F68D6A /* menu.json */; };
+		FF247D4129CB4F2000F68D6A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D3E29CB4F2000F68D6A /* Menu.swift */; };
+		FF247D4429CB5A1400F68D6A /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D4329CB5A1400F68D6A /* ItemRow.swift */; };
+		FF247D4729CB616600F68D6A /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D4629CB616600F68D6A /* ItemDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +27,12 @@
 		FF247D3129CB40BC00F68D6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FF247D3829CB41F300F68D6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF247D3929CB42F400F68D6A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		FF247D3A29CB4EBE00F68D6A /* Food.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Food.xcassets; sourceTree = "<group>"; };
+		FF247D3C29CB4F2000F68D6A /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		FF247D3D29CB4F2000F68D6A /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
+		FF247D3E29CB4F2000F68D6A /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		FF247D4329CB5A1400F68D6A /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
+		FF247D4629CB616600F68D6A /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				FF247D2A29CB40BC00F68D6A /* DogstarApp.swift */,
-				FF247D2C29CB40BC00F68D6A /* ContentView.swift */,
+				FF247D4529CB5A2500F68D6A /* View */,
+				FF247D4229CB4F2D00F68D6A /* Food */,
 				FF247D2E29CB40BC00F68D6A /* Assets.xcassets */,
+				FF247D3A29CB4EBE00F68D6A /* Food.xcassets */,
 				FF247D3829CB41F300F68D6A /* Info.plist */,
 				FF247D3929CB42F400F68D6A /* README.md */,
 				FF247D3029CB40BC00F68D6A /* Preview Content */,
@@ -69,6 +83,26 @@
 				FF247D3129CB40BC00F68D6A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF247D4229CB4F2D00F68D6A /* Food */ = {
+			isa = PBXGroup;
+			children = (
+				FF247D3D29CB4F2000F68D6A /* menu.json */,
+				FF247D3E29CB4F2000F68D6A /* Menu.swift */,
+				FF247D3C29CB4F2000F68D6A /* Order.swift */,
+			);
+			path = Food;
+			sourceTree = "<group>";
+		};
+		FF247D4529CB5A2500F68D6A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF247D2C29CB40BC00F68D6A /* ContentView.swift */,
+				FF247D4329CB5A1400F68D6A /* ItemRow.swift */,
+				FF247D4629CB616600F68D6A /* ItemDetail.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +164,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF247D3229CB40BC00F68D6A /* Preview Assets.xcassets in Resources */,
+				FF247D3B29CB4EBE00F68D6A /* Food.xcassets in Resources */,
+				FF247D4029CB4F2000F68D6A /* menu.json in Resources */,
 				FF247D2F29CB40BC00F68D6A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +177,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF247D3F29CB4F2000F68D6A /* Order.swift in Sources */,
+				FF247D4729CB616600F68D6A /* ItemDetail.swift in Sources */,
 				FF247D2D29CB40BC00F68D6A /* ContentView.swift in Sources */,
+				FF247D4429CB5A1400F68D6A /* ItemRow.swift in Sources */,
+				FF247D4129CB4F2000F68D6A /* Menu.swift in Sources */,
 				FF247D2B29CB40BC00F68D6A /* DogstarApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -5,3 +5,7 @@
 - Octon scheme handling
 - Notification from IRC channel
 - Some practice on the async/await
+
+## Notes
+
+- Press Cmd Opt P to resume the preview.
