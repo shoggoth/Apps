@@ -1,5 +1,12 @@
-# Apps
+#  Things to do
 
-A place where I put the apps I have been working on recently.
+- Refresher on more modern SwiftUI
+- Deep linking
+- Octon scheme handling
+- Notification from IRC channel
+- Some practice on the async/await
+- Revise property wrappers
 
-Always in a state of being Under Construction.
+## Notes
+
+- Press Cmd Opt P to resume the preview.
