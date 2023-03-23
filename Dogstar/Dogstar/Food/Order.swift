@@ -11,13 +11,7 @@ import SwiftUI
 class Order: ObservableObject {
     @Published var items = [MenuItem]()
 
-    var total: Int {
-        if items.count > 0 {
-            return items.reduce(0) { $0 + $1.price }
-        } else {
-            return 0
-        }
-    }
+    var total: Int { items.count > 0 ? items.reduce(0) { $0 + $1.price } : 0 }
 
     func add(item: MenuItem) {
         items.append(item)

@@ -18,19 +18,27 @@ struct OrderView: View {
                         HStack {
                             Text(item.name)
                             Spacer()
-                            Text("£\(item.price)")
+                            Text(item.price.formatted(.currency(code: "GBP")))
                         }
                     }
+                    .onDelete(perform: deleteItems)
                 }
                 
                 Section {
                     NavigationLink("Place Order") {
-                        Text("Order Placed")
+                        CheckoutView()
                     }
                 }
+                .disabled(order.items.isEmpty)
             }
             .navigationTitle("Order")
+            .listStyle(.insetGrouped)
+            .toolbar { EditButton() }
         }
+    }
+    
+    func deleteItems(at offsets: IndexSet) {
+        order.items.remove(atOffsets: offsets)
     }
 }
 

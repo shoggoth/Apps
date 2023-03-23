@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            ContentView()
+            MenuView()
                 .tabItem { Label("Menu", systemImage: "list.dash") }
             
             OrderView()
