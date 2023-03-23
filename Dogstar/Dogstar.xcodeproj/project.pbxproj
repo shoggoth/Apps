@@ -17,6 +17,8 @@
 		FF247D4129CB4F2000F68D6A /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D3E29CB4F2000F68D6A /* Menu.swift */; };
 		FF247D4429CB5A1400F68D6A /* ItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D4329CB5A1400F68D6A /* ItemRow.swift */; };
 		FF247D4729CB616600F68D6A /* ItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D4629CB616600F68D6A /* ItemDetail.swift */; };
+		FF247D4929CC6A7B00F68D6A /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D4829CC6A7B00F68D6A /* OrderView.swift */; };
+		FF247D4B29CC6CC600F68D6A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF247D4A29CC6CC600F68D6A /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		FF247D3E29CB4F2000F68D6A /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		FF247D4329CB5A1400F68D6A /* ItemRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemRow.swift; sourceTree = "<group>"; };
 		FF247D4629CB616600F68D6A /* ItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetail.swift; sourceTree = "<group>"; };
+		FF247D4829CC6A7B00F68D6A /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		FF247D4A29CC6CC600F68D6A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +102,11 @@
 		FF247D4529CB5A2500F68D6A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FF247D4A29CC6CC600F68D6A /* MainView.swift */,
 				FF247D2C29CB40BC00F68D6A /* ContentView.swift */,
 				FF247D4329CB5A1400F68D6A /* ItemRow.swift */,
 				FF247D4629CB616600F68D6A /* ItemDetail.swift */,
+				FF247D4829CC6A7B00F68D6A /* OrderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -178,9 +184,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF247D3F29CB4F2000F68D6A /* Order.swift in Sources */,
+				FF247D4B29CC6CC600F68D6A /* MainView.swift in Sources */,
 				FF247D4729CB616600F68D6A /* ItemDetail.swift in Sources */,
 				FF247D2D29CB40BC00F68D6A /* ContentView.swift in Sources */,
 				FF247D4429CB5A1400F68D6A /* ItemRow.swift in Sources */,
+				FF247D4929CC6A7B00F68D6A /* OrderView.swift in Sources */,
 				FF247D4129CB4F2000F68D6A /* Menu.swift in Sources */,
 				FF247D2B29CB40BC00F68D6A /* DogstarApp.swift in Sources */,
 			);

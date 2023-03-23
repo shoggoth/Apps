@@ -5,6 +5,7 @@
 - Octon scheme handling
 - Notification from IRC channel
 - Some practice on the async/await
+- Revise property wrappers
 
 ## Notes
 
