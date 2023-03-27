@@ -35,8 +35,6 @@
 
 #include "mindguard.h"
 
-#define FALSE 0
-#define TRUE  1
 char mg_version[] = "0.0.0.4";
 char mg_year[] = "2003";
 
@@ -60,14 +58,13 @@ int to_depsych = FALSE;
 int to_monitor = FALSE;
 int gcar, gmode;
 
-/*
 GdkGC *bio_gc[3];
 GdkGC *depsych_gc[16];
 GtkStyle *style_web;
 GtkStyle *style_ok;
 GtkStyle *style_warn;
 
-// Main Window
+/* Main Window */
 GtkWidget *window;
 GtkWidget *but_scan;
 GtkWidget *but_logview;
@@ -91,7 +88,7 @@ GtkWidget *scan_label;
 GtkWidget *scan_progress;
 GtkWidget *scan_draw;
 
-// PsIdent Window
+/* PsIdent Window */
 GtkWidget *window_psid;
 GtkWidget *check_bio;
 GtkWidget *check_epo;
@@ -103,7 +100,7 @@ GtkWidget *spin_year;
 GtkWidget *opt_month;
 GtkAdjustment *adjust_day;
 
-// Other Windows
+/* Other Windows */
 GtkWidget *window_depsych;
 GtkWidget *draw_depsych;
 GtkWidget *window_about;
@@ -113,7 +110,6 @@ GtkWidget *text_log;
 static GdkPixmap *pixmap_bio = NULL;
 static GdkPixmap *pixmap_scan = NULL;
 static GdkPixmap *pixmap_depsych = NULL;
-*/
 
 typedef enum
 {
@@ -180,41 +176,15 @@ struct carmod module[20];
 int mod_num = 0;
 char car_path[256];
 
-void diag_display(int id, char *msg, int wut) {
-    
-    printf("Diagnostic %d: %s (%d)\n", id, msg, wut);
-}
 
-#define GINT_TO_POINTER(x) x
-#define GTK_WIDGET(x) x
-
-typedef int gint;
-typedef void * gpointer;
-
-static void gtk_widget_set_sensitive(int a, int b) {}
-static void gtk_main() {}
-static void gtk_main_quit() {}
-static void gtk_timeout_remove(int a) {}
-static int gtk_timeout_add(int a, int (*b)(void *), int c) { return a; }
-
-static void diag_display_clear(void *a) {}
-static void diag_set_clear_to(int a) {}
-
-static void scanbox_prog(float i) {}
-static void scanbox_label(char *text) {}
-static void scanbox_state(int state) {}
-
-static void old_append_log(char *text, int car, int context, int source, char *infotext, int deciphered, int mode);
-static void popup_dialog(char *text, char *ok, char *cancel, void (*func_pointer_1) (void), void (*func_pointer_2) (void), int opts) {}
-static void open_main_window(void) {}
-static void set_up_colors(void) {}
 
 /**** MAIN AND QUIT ****/
-int mg_main (int argc, char *argv[])
+int main (int argc, char *argv[])
 {
 	int i, quit = FALSE;
 
 	/* DEFAULTS */
+	strcpy(car_path, "./carriers/");
 	strcpy(user_name_data, "");
 	bday = 1; bmonth = 1; byear = 1900;
 	algo = 0; scan_mode = 0; scan_depth = 50;
@@ -256,8 +226,9 @@ int mg_main (int argc, char *argv[])
 
 	if (quit==TRUE) return 0;
 
-	//gtk_init (&argc, &argv);
-	//carlist = gtk_clist_new (1);
+	gtk_init (&argc, &argv);
+
+	carlist = gtk_clist_new (1);
 
 	switch (load_mods())
 		{
@@ -291,7 +262,7 @@ int mg_main (int argc, char *argv[])
 				if (strlen(user_name) == 0)
 					{
 					state_epo = FALSE;
-					//gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON (check_epo), FALSE);
+					gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON (check_epo), FALSE);
 					}
 				else
 					{
@@ -300,9 +271,7 @@ int mg_main (int argc, char *argv[])
 					}
 				}
 			initialize_jam();
-                to_monitor = gtk_timeout_add(5000,
-                                             jam,
-                                             GINT_TO_POINTER(2));
+			to_monitor = gtk_timeout_add(5000, jam, GINT_TO_POINTER(2));
 			diag_set_clear_to(15);
 		}
 
@@ -351,9 +320,9 @@ int rs(int h)
 }
 void scan_controls_sensitive(int state)
 {
-	gtk_widget_set_sensitive(GTK_WIDGET(0), state);
-	gtk_widget_set_sensitive(GTK_WIDGET(0), state);
-	gtk_widget_set_sensitive(GTK_WIDGET(0), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(but_scan), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(check_silent), state);
+	gtk_widget_set_sensitive(GTK_WIDGET(opt_scan_mode), state);
 	return;
 }
 int carrier_identify()
@@ -383,7 +352,7 @@ void signal_info(char *infotext)
 }
 void parse_decipher(int car, int mode)
 {
-    int context, index = 0, source;
+	int context, index, source;
 	char text[256], infotext[256];
 
 	context = rs(4);
@@ -425,15 +394,14 @@ void parse_decipher(int car, int mode)
 	decipher(text, module[car].file, context, index);
 
 	if (state_log)
-        old_append_log (text, car, context, source, infotext, TRUE, gmode);
+		append_log (text, car, context, source, infotext, TRUE, gmode);
 
 	context_name_label(text, context);
 	popup_dialog(text, "Ok", NULL, NULL, NULL, DIALOG_BEEP | DIALOG_MOUSE);
 
 	return;
 }
-
-int decipher_check(void *data)
+gint decipher_check(gpointer data)
 {
 	static float c = 0.0;
 
@@ -461,12 +429,12 @@ int decipher_check(void *data)
 				diag_display(2, "Undecipherable", 0);
 				diag_set_clear_to(10);
 				if (state_log)
-                    old_append_log ("", gcar, 0, 0, "", FALSE, gmode);
+					append_log ("", gcar, 0, 0, "", FALSE, gmode);
 				}
 			to_scan = FALSE;
 			scan_controls_sensitive(TRUE);
 			if (! to_jam)
-                to_monitor = gtk_timeout_add (1000, jam, GINT_TO_POINTER(2));
+				to_monitor = gtk_timeout_add (1000, jam, GINT_TO_POINTER(2));
 			}
 		}
 
@@ -490,7 +458,7 @@ gint scan_for_signal(gpointer data)
 		}
 	if ((int)data == 3)
 		{
-		//update_scan();
+		update_scan();
 		i++;
 		if (i > 50)
 			{
@@ -504,7 +472,8 @@ gint scan_for_signal(gpointer data)
 					{
 					diag_display_clear(NULL);
 					diag_display(0, "Signal Isolated", 0);
-					to_scan = gtk_timeout_add (2000, decipher_check, GINT_TO_POINTER(1));
+					to_scan = gtk_timeout_add (2000, decipher_check,
+									GINT_TO_POINTER(1));
 					}
 				else
 					{
@@ -512,7 +481,8 @@ gint scan_for_signal(gpointer data)
 					scanbox_label("No Signals");
 					scan_controls_sensitive(TRUE);
 					if (! to_jam)
-                        to_monitor = gtk_timeout_add (1000, jam, GINT_TO_POINTER(2));
+						to_monitor = gtk_timeout_add (1000, jam,
+									GINT_TO_POINTER(2));
 					}
 				}
 			else
@@ -535,8 +505,46 @@ void scan()
 
 
 /**** SCAN BOX ****/
-
-/*
+void scanbox_state(int state)
+{
+	switch(state)
+		{
+		case SCANBOX_PROGRESS:
+			gtk_widget_hide (scan_draw);
+			gtk_widget_hide (scan_label);
+			gtk_widget_show (scan_progress);
+			break;
+		case SCANBOX_DRAW:
+			gtk_widget_hide (scan_progress);
+			gtk_widget_hide (scan_label);
+			gtk_widget_show (scan_draw);
+			break;
+		case SCANBOX_LABEL:
+			gtk_widget_hide (scan_draw);
+			gtk_widget_hide (scan_progress);
+			gtk_widget_show (scan_label);
+			break;
+		case SCANBOX_CLEAR:
+			gtk_widget_hide (scan_draw);
+			gtk_widget_hide (scan_progress);
+			gtk_widget_hide (scan_label);
+			break;
+		}
+	return;
+}
+void scanbox_label(char *text)
+{
+	gtk_label_set(GTK_LABEL(scan_label), text);
+	scanbox_state (SCANBOX_LABEL);
+	return;
+}
+void scanbox_prog(float i)
+{
+	if (i > 1.0) i = 1.0;
+	gtk_progress_bar_update(GTK_PROGRESS_BAR(scan_progress), (float)i);
+	scanbox_state (SCANBOX_PROGRESS);
+	return;
+}
 void create_scan(GtkWidget *widget)
 {
 	int w, h, x, y, i, r;
@@ -565,7 +573,7 @@ void create_scan(GtkWidget *widget)
 				gdk_draw_line (pixmap_scan, widget->style->black_gc,
 				x, 0, x, y);
 				break;
-			case 6:	// Drunks are easily affected by psionic mind-control.
+			case 6:	/* Drunks are easily affected by psionic mind-control. */
 				if (rs(10) < 5) y++;
 				else y--;
 				if (y > h) y = h;
@@ -583,7 +591,6 @@ void create_scan(GtkWidget *widget)
 
 	return;
 }
-
 void draw_scan(GtkWidget *widget, GdkEventExpose *event)
 {
 	gdk_draw_pixmap(widget->window,
@@ -603,7 +610,7 @@ void update_scan()
 		scan_draw->allocation.width, scan_draw->allocation.height);
 	return;
 }
-*/
+
 
 /**** JAM/SCRAMBLE ****/
 int jam_mode(int car)
@@ -681,10 +688,11 @@ gint jam_action(gpointer data)
 					}
 				else
 					{
-                        old_append_log ("", gcar, 0, 0, "", FALSE, gmode);
+					append_log ("", gcar, 0, 0, "", FALSE, gmode);
 					diag_set_clear_to(10);
-					//gtk_widget_set_sensitive(GTK_WIDGET(but_scan), TRUE);
-                        to_monitor = gtk_timeout_add (1000, jam, GINT_TO_POINTER(2));
+					gtk_widget_set_sensitive(GTK_WIDGET(but_scan), TRUE);
+					to_monitor = gtk_timeout_add (1000, jam,
+									GINT_TO_POINTER(2));
 					}
 				}
 			else			/* Pray this never happens! */
@@ -697,9 +705,9 @@ gint jam_action(gpointer data)
 					"Please Consult Documentation\n"
 					"On What To Do.", "Oh No!",
 					NULL, NULL, NULL, DIALOG_BEEP | DIALOG_CENTER | DIALOG_WARN);
-				//gtk_widget_set_sensitive(GTK_WIDGET(but_scan), TRUE);
-                    old_append_log ("", gcar, 0, 0, "", FALSE, gmode);
-                    to_monitor = gtk_timeout_add (1000, jam, GINT_TO_POINTER(2));
+				gtk_widget_set_sensitive(GTK_WIDGET(but_scan), TRUE);
+				append_log ("", gcar, 0, 0, "", FALSE, gmode);
+				to_monitor = gtk_timeout_add (1000, jam, GINT_TO_POINTER(2));
 				}
 			}
 		}
@@ -717,17 +725,17 @@ gint jam(gpointer data)
 {
 	if ((int)data == 2)
 		{
-		//gtk_timeout_remove(to_monitor);
-            to_monitor = gtk_timeout_add (1000, jam, NULL);
+		gtk_timeout_remove(to_monitor);
+		to_monitor = gtk_timeout_add (1000, jam, NULL);
 		}
 	if (! to_monitor)
-        to_monitor = gtk_timeout_add (1000, jam, NULL);
+		to_monitor = gtk_timeout_add (1000, jam, NULL);
 	else
 		if (jam_detect() & ! to_scan & ! to_depsych & ! state_silent & ! to_jam)
 			{
 			gtk_timeout_remove(to_monitor);
-                to_monitor = FALSE;
-			//gtk_widget_set_sensitive(GTK_WIDGET(but_scan), FALSE);
+			to_monitor = FALSE;
+			gtk_widget_set_sensitive(GTK_WIDGET(but_scan), FALSE);
 			jam_action(NULL);
 			}
 	return TRUE;
@@ -828,8 +836,6 @@ void context_name_label(char *data, int context)
 
 
 /**** BIORHYTHM ****/
-
-/*
 void create_biorhythm(GtkWidget *widget)
 {
 	int i, ii, w, h, y, x2, y2, md, days, new;
@@ -837,13 +843,15 @@ void create_biorhythm(GtkWidget *widget)
 
 	pi2 = 3.14159265358979323846 * 2;
 
-//	23 = Physical (red)
-//	28 = Emotional (green)
-//	33 = Intellectual (blue)
-//	There is also a hypothesized 38 day Intuitional biorhythm,
-//	but it hasn't been full tested by the scientific community
-//	so we will forgo its inclusion until its existence is put
-//	on a more empirically sound footing.
+	/*
+	23 = Physical (red)
+	28 = Emotional (green) 
+	33 = Intellectual (blue)
+	There is also a hypothesized 38 day Intuitional biorhythm,
+	but it hasn't been full tested by the scientific community
+	so we will forgo its inclusion until its existence is put
+	on a more empirically sound footing.
+	*/
 
 	days = days_since();
 
@@ -858,7 +866,7 @@ void create_biorhythm(GtkWidget *widget)
 	gdk_draw_rectangle (pixmap_bio, widget->style->bg_gc[GTK_WIDGET_STATE(widget)],
 		TRUE, 0, 0, w, h);
 
-	// axes and ticks
+	/* axes and ticks */
 	gdk_draw_line (pixmap_bio, widget->style->black_gc, 0, (h/2), w, (h/2));
 	gdk_draw_line (pixmap_bio, widget->style->black_gc, (w/2), 0, (w/2), h);
 	for ( i = 1 ; i < 14; i++)
@@ -873,7 +881,7 @@ void create_biorhythm(GtkWidget *widget)
 			(w/2)-(x * r), (h/2) + 3);
 		}
 
- 	// bio-sines
+ 	/* bio-sines */
 	for ( i = 0 ; i < 3; i++)
 		{
 		x2 = bio_len[i];
@@ -895,7 +903,6 @@ void create_biorhythm(GtkWidget *widget)
 
 	return;
 }
- 
 void draw_biorhythm(GtkWidget *widget, GdkEventExpose *event)
 {
 	gdk_draw_pixmap(widget->window,
@@ -915,18 +922,18 @@ void update_biorhythm()
 		draw_bio->allocation.width, draw_bio->allocation.height);
 	return;
 }
-*/
+
 
 /**** EPONYMOLOG ****/
 void update_username_eponymolog()
 {
-	//strcpy (user_name_data, gtk_entry_get_text(GTK_ENTRY(entry_epo)));
+	strcpy (user_name_data, gtk_entry_get_text(GTK_ENTRY(entry_epo)));
 	update_eponymolog();
 
 	if (strlen(user_name) == 0)
 		{
 		state_epo = FALSE;
-		//gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_epo), FALSE);
+		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_epo), FALSE);
 		}
 
 	/* MindGuard cares about your wellbeingness. */
@@ -942,7 +949,7 @@ void update_eponymolog()
 {
 	char text[4];
 	sprintf (text, "%i", eponymolog());
-	//gtk_label_set_text (GTK_LABEL(label_epo), text);
+	gtk_label_set_text (GTK_LABEL(label_epo), text);
 	return;
 }
 int eponymolog(void)
@@ -970,8 +977,6 @@ int eponymolog(void)
 
 
 /**** DEPSYCH ****/
-
-/*
 gint depsych_hologram(gpointer data)
 {
 	int w, h;
@@ -1049,11 +1054,9 @@ void depsych()
 		}
 	return;
 }
-*/
+
 
 /**** DIAGNOSTIC BOX ***/
-
-/*
 void diag_display(int n, char *text, int style)
 {
 	if (window)
@@ -1082,7 +1085,7 @@ void diag_display(int n, char *text, int style)
 		}
 	return;
 }
-gint old_diag_display_clear(gpointer data)
+gint diag_display_clear(gpointer data)
 {
 	int i;
 	if (window)
@@ -1100,10 +1103,10 @@ void diag_set_clear_to(int secs)
 	to_diag_clear = gtk_timeout_add (1000 * secs, diag_display_clear, NULL);
 	return;
 }
-*/
+
 
 /**** LOG ****/
-void check_for_mg_home_dir(void)
+void check_for_mg_home_dir()
 {
 	DIR *dp;
 	char path[256];
@@ -1113,12 +1116,10 @@ void check_for_mg_home_dir(void)
 	else
 		{
 		sprintf(path, "mkdir %s/MindGuard", getenv("HOME"));
-		//system(path);
+		system(path);
 		}
 	return;
 }
-
-/*
 void view_log()
 {
 	FILE *log;
@@ -1150,7 +1151,6 @@ void view_log()
 
 	return;
 }
-
 void flush_log()
 {
 	FILE *log;
@@ -1166,8 +1166,7 @@ void flush_log()
 		}
 	return;
 }
- */
-void old_append_log(char *text, int car, int context, int source, char *infotext,
+void append_log(char *text, int car, int context, int source, char *infotext,
 		int deciphered, int mode)
 {
 	FILE *log;
@@ -1218,7 +1217,7 @@ void old_append_log(char *text, int car, int context, int source, char *infotext
 				break;
 			}
 		fclose(log);
-		//if (window_logview != NULL) view_log();
+		if (window_logview != NULL) view_log();
 		}
 	return;
 }
@@ -1277,9 +1276,17 @@ void save_prefs()
 }
 
 
-void update_gui_from_prefs()
+void set_scan_button_state()
 {
-    /*
+	if (state_silent)
+		gtk_widget_set_sensitive(GTK_WIDGET(but_scan), TRUE);
+	else if (state_auto)
+		gtk_widget_set_sensitive(GTK_WIDGET(but_scan), FALSE);
+	else
+		gtk_widget_set_sensitive(GTK_WIDGET(but_scan), TRUE);
+}
+void update_gui_from_prefs()	
+{
 	if (window != NULL)
 		{
 		gtk_option_menu_set_history (GTK_OPTION_MENU (opt_algo), (guint) algo);
@@ -1307,7 +1314,7 @@ void update_gui_from_prefs()
 		update_eponymolog();
 		update_biorhythm();
 		}
-	return;*/
+	return;
 }
 
 
@@ -1324,9 +1331,9 @@ int load_mods()
 	diag_display_clear(NULL);
 	diag_display(0, "Installing Modules...", 0);
 
-//	gtk_clist_freeze(GTK_CLIST (carlist));
-//	gtk_clist_clear(GTK_CLIST (carlist));
-//	gtk_clist_thaw(GTK_CLIST (carlist));
+	gtk_clist_freeze(GTK_CLIST (carlist));
+	gtk_clist_clear(GTK_CLIST (carlist));
+	gtk_clist_thaw(GTK_CLIST (carlist));
 
 	while (try < 4)
 		{
@@ -1435,14 +1442,14 @@ void add_mods_to_clist()
 	char *cars[1][2];
 	int i;
 
-	//gtk_clist_freeze(GTK_CLIST (carlist));
+	gtk_clist_freeze(GTK_CLIST (carlist));
 	for (i = 0; i < mod_num; i++)
 		{
 		cars[0][0] = module[i].name;
 		cars[0][1] = module[i].version;
-		//gtk_clist_append (GTK_CLIST (carlist), cars[0]);
+		gtk_clist_append (GTK_CLIST (carlist), cars[0]);
 		}
-	//gtk_clist_thaw(GTK_CLIST (carlist));
+	gtk_clist_thaw(GTK_CLIST (carlist));
 	return;
 }
 int chars_value(char *c, int n)
@@ -1583,8 +1590,6 @@ int parse_mod(char *path, int num)
 
 	return result;
 }
-
-/*
 void carrier_info(GtkWidget *widget, int row)
 {
 	if (! to_scan & ! to_jam)
@@ -1598,7 +1603,7 @@ void carrier_info(GtkWidget *widget, int row)
 		diag_set_clear_to(20);
 		}
 	return;
-}*/
+}
 
 
 /**** DATE/TIME STUFF ****/
@@ -1622,12 +1627,11 @@ int days_in_month(int month, int year)
 }
 void update_day_spin()
 {
-    /*
 	GTK_ADJUSTMENT(adjust_day)->upper = days_in_month(bmonth, byear);
 	gtk_signal_emit_by_name (GTK_OBJECT(adjust_day), "changed");
 	gtk_spin_button_update (GTK_SPIN_BUTTON(spin_day));
 	bday = gtk_spin_button_get_value_as_int(GTK_SPIN_BUTTON(spin_day));
-	return;*/
+	return;
 }
 int days_since()
 {
@@ -1692,7 +1696,6 @@ int dir_exists (char path[255])
 
 
 /**** VARIOUS GUI CALLBACKS ****/
-/*
 void open_webpage(GtkWidget *widget, int url)
 {
 	char command[255];
@@ -1805,10 +1808,10 @@ void check_widget_callback (GtkWidget *widget, int id)
 			break;
 		}
 	return;
-}*/
+}
 
 
-/* WIDGET HELPERS
+/**** WIDGET HELPERS ****/
 GtkWidget *make_web_link(char *url, int url_num)
 {
 	GtkWidget *box, *button, *label;
@@ -1827,7 +1830,7 @@ GtkWidget *make_web_link(char *url, int url_num)
 }
 
 
-// **** COLORS, STYLES, GC'S
+/**** COLORS, STYLES, GC'S ****/
 GdkColor *make_color(int red, int grn, int blu)
 {
 	GdkColor *color;
@@ -1863,7 +1866,7 @@ GdkGC *make_gc(GtkWidget *widget, GdkColor *c)
 	gdk_gc_set_foreground (gc, c);
 	return gc;
 }
-void set_up_colors() // and styles and graphic contexts
+void set_up_colors() /* and styles and graphic contexts */
 {
 	int i, c = 0;
 	GdkColor *colors[3];
@@ -1890,7 +1893,7 @@ void set_up_colors() // and styles and graphic contexts
 }
 
 
-// WINDOWS, WINDOWS, AND MORE WINDOWS
+/**** WINDOWS, WINDOWS, AND MORE WINDOWS ****/
 void close_popup_dialog_1(GtkWidget *w, GtkWidget *window)
 {
 	gtk_widget_destroy (GTK_WIDGET(window));
@@ -2305,7 +2308,7 @@ void open_psident_window()
 		gtk_container_add (GTK_CONTAINER (window_psid), box_psidm);
 		gtk_widget_show (box_psidm);
 
-	// * BIORHYTHM SYNC
+	/** BIORHYTHM SYNC **/
 		check_bio = gtk_check_button_new_with_label ("Biorhythm Sync");
 		gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_bio), state_bio);
 		gtk_signal_connect (GTK_OBJECT (check_bio), "toggled",
@@ -2313,7 +2316,7 @@ void open_psident_window()
 		gtk_box_pack_start(GTK_BOX(box_psidm), check_bio, FALSE, FALSE, 0);
 		gtk_widget_show (check_bio);
 
-		// date setter
+		/** date setter **/
 		frame = gtk_frame_new ("Birthdate");
 		gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_ETCHED_IN);
 		gtk_box_pack_start(GTK_BOX(box_psidm), frame, FALSE, FALSE, 0);
@@ -2356,7 +2359,7 @@ void open_psident_window()
 		gtk_box_pack_start(GTK_BOX(box_1), spin_year, TRUE, TRUE, 0);
 		gtk_widget_show (spin_year);
 
-		// drawing area
+		/** drawing area **/
 		frame = gtk_frame_new (NULL);
 		gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_IN);
 		gtk_box_pack_start(GTK_BOX(box_psidm), frame, TRUE, TRUE, 0);
@@ -2382,7 +2385,7 @@ void open_psident_window()
 				"Green = Emotional\n"
 				"Blue = Intellectual", NULL);
 
-	// EPONYMOLOG
+	/** EPONYMOLOG **/
 		separator = gtk_hseparator_new();
 		gtk_box_pack_start(GTK_BOX(box_psidm), separator, FALSE, TRUE, 2);
 		gtk_widget_show (separator);
@@ -2413,11 +2416,11 @@ void open_psident_window()
 		gtk_widget_show (entry_epo);
 
 		label_epo = gtk_label_new (NULL);
-		update_eponymolog();  // put proper value in]
+		update_eponymolog();  /* put proper value in */
 		gtk_box_pack_start(GTK_BOX(box_1), label_epo, FALSE, FALSE, 10);
 		gtk_widget_show (label_epo);
 
-	// LOAD SAVE CLOSE
+	/** LOAD SAVE CLOSE **/
 		separator = gtk_hseparator_new();
 		gtk_box_pack_start(GTK_BOX(box_psidm), separator, FALSE, TRUE, 2);
 		gtk_widget_show (separator);
@@ -2493,7 +2496,7 @@ void open_main_window()
 				GTK_FILL | GTK_EXPAND, GTK_FILL | GTK_EXPAND, 0, 0);
 	gtk_widget_show (boxr);
 
-    // CARRIER LIST
+    /** CARRIER LIST **/
 	button = gtk_button_new_with_label ("Known Carriers");
 	gtk_signal_connect (GTK_OBJECT (button), "clicked",
 				GTK_SIGNAL_FUNC (reload_mods), NULL);
@@ -2507,7 +2510,7 @@ void open_main_window()
 	gtk_box_pack_start(GTK_BOX(boxl), carscroll, TRUE, TRUE, 0); 
 	gtk_widget_show (carscroll);
 
-	// created carlist in main()
+	/* created carlist in main() */
 	gtk_signal_connect (GTK_OBJECT (carlist), "select_row",
 				GTK_SIGNAL_FUNC (carrier_info), NULL);
 	gtk_clist_set_column_width (GTK_CLIST(carlist), 0, 130);
@@ -2518,12 +2521,12 @@ void open_main_window()
 	gtk_box_pack_start(GTK_BOX(boxl), separator, FALSE, FALSE, 2);
 	gtk_widget_show (separator);
 
-    // SCAN SETTINGS TABLE
+    /** SCAN SETTINGS TABLE **/
 	table = gtk_table_new (3, 2, FALSE);
 	gtk_box_pack_start(GTK_BOX(boxl), table, FALSE, FALSE, 0);
 	gtk_widget_show (table);
 
-	// ALGORITHM MENU
+	/* ALGORITHM MENU */
 	opt_algo = gtk_option_menu_new ();
 	menu = gtk_menu_new ();
 	for ( i = 0 ; i < 5; i++)
@@ -2540,7 +2543,7 @@ void open_main_window()
 				GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
 	gtk_widget_show (opt_algo);
 
-	// SCAN MODE MENU
+	/* SCAN MODE MENU */
 	opt_scan_mode = gtk_option_menu_new ();
 	menu = gtk_menu_new ();
 	for ( i = 0 ; i < 7; i++)
@@ -2557,7 +2560,7 @@ void open_main_window()
 				GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
 	gtk_widget_show (opt_scan_mode);
 
-	// AUTO DECIPHER
+	/* AUTO DECIPHER */
 	check_auto = gtk_check_button_new_with_label ("Auto Decipher");
 	gtk_toggle_button_set_active (GTK_TOGGLE_BUTTON (check_auto), state_auto);
 	gtk_signal_connect (GTK_OBJECT (check_auto), "toggled",
@@ -2567,7 +2570,7 @@ void open_main_window()
 				GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
 	gtk_widget_show (check_auto);
 
-	// SCANNING DEPTH
+	/* SCANNING DEPTH */
 	adj_scan = gtk_adjustment_new (scan_depth, 0, 51, 1, 1, 1);
 	gtk_signal_connect (GTK_OBJECT (adj_scan), "value_changed",
 				GTK_SIGNAL_FUNC (scan_depth_adjust), NULL);
@@ -2578,7 +2581,7 @@ void open_main_window()
 				GTK_FILL | GTK_EXPAND, GTK_FILL, 0, 0);
 	gtk_widget_show (scale);
 
- // SCAN PSIDENT DEPSYCH
+    /** SCAN PSIDENT DEPSYCH **/
 	box_1 = gtk_hbox_new(TRUE, 0);
 	gtk_box_pack_start(GTK_BOX(boxr), box_1, FALSE, FALSE, 0);
 	gtk_widget_show (box_1);
@@ -2603,7 +2606,7 @@ void open_main_window()
 	gtk_box_pack_start (GTK_BOX(box_1), button, TRUE, TRUE, 0);
 	gtk_widget_show (button);
 
- // DIAGNOSTIC BOX
+    /** DIAGNOSTIC BOX **/
 	frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_IN);
 	gtk_box_pack_start (GTK_BOX(boxr), frame, TRUE, TRUE, 0);
@@ -2625,7 +2628,7 @@ void open_main_window()
 		gtk_widget_show (label_diag[i]);
 		}
 
- // PREFS NOTEBOOK
+    /** PREFS NOTEBOOK **/
 	notebook = gtk_notebook_new ();
 	gtk_notebook_set_tab_pos (GTK_NOTEBOOK(notebook), GTK_POS_TOP);
 	gtk_box_pack_start (GTK_BOX(boxr), notebook, FALSE, FALSE, 0);
@@ -2739,7 +2742,7 @@ void open_main_window()
 				GTK_SIGNAL_FUNC (open_about_window), NULL);
 	gtk_widget_show (but_about);
 
- // STATUS/SCANNER BOX
+    /** STATUS/SCANNER BOX **/
 	frame = gtk_frame_new (NULL);
 	gtk_frame_set_shadow_type (GTK_FRAME(frame), GTK_SHADOW_IN);
 	gtk_widget_set_usize (GTK_WIDGET(frame), FALSE, 22);
@@ -2751,7 +2754,7 @@ void open_main_window()
 	gtk_container_add (GTK_CONTAINER(frame), box_1);
 	gtk_widget_show (box_1);
 
- // don't show these until later
+	/** don't show these until later **/
 	scan_label = gtk_label_new ("NO CARRIERS");
 	gtk_box_pack_start(GTK_BOX(box_1), scan_label, TRUE, TRUE, 0);
 
@@ -2765,7 +2768,7 @@ void open_main_window()
 	gtk_signal_connect (GTK_OBJECT(scan_draw), "configure_event",
 				(GtkSignalFunc) create_scan, NULL);
 
-    // LOAD SAVE QUIT
+    /** LOAD SAVE QUIT **/
 	box_1 = gtk_hbox_new(TRUE, 0);
 	gtk_table_attach (GTK_TABLE(table_main), box_1, 2, 3, 2, 3,
 				GTK_FILL | GTK_EXPAND, FALSE, 0, 0);
@@ -2794,6 +2797,6 @@ void open_main_window()
 
 	return;
 }
-*/
+
 
 /* ...And your mind lived happily ever after.  The End */

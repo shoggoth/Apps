@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FF2E450B29D1EF0800FDD9F5 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF68227329CDAFB700A0ED3C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF68227229CDAFB700A0ED3C /* main.cpp */; };
 		FF68228029CDB01300A0ED3C /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68227B29CDB00100A0ED3C /* libzapato.a */; };
 		FF68228529CDB16300A0ED3C /* zapato.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF68228429CDB16300A0ED3C /* zapato.cpp */; };
-		FF68229329CDCEDD00A0ED3C /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF68229429CDCEDD00A0ED3C /* carrier.h in Headers */ = {isa = PBXBuildFile; fileRef = FF68229229CDCEDD00A0ED3C /* carrier.h */; };
-		FF68229729CDD39300A0ED3C /* mindguard.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229529CDD39300A0ED3C /* mindguard.c */; };
 		FF68229829CDD39300A0ED3C /* mindguard.h in Headers */ = {isa = PBXBuildFile; fileRef = FF68229629CDD39300A0ED3C /* mindguard.h */; };
 /* End PBXBuildFile section */
 
@@ -241,8 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF68229329CDCEDD00A0ED3C /* carrier.c in Sources */,
-				FF68229729CDD39300A0ED3C /* mindguard.c in Sources */,
+				FF2E450B29D1EF0800FDD9F5 /* carrier.c in Sources */,
 				FF68228529CDB16300A0ED3C /* zapato.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

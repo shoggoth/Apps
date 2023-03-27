@@ -37,9 +37,9 @@ void process_options(int argc, char * const argv[]) {
 
          case '?':
          case 'h':
-            std::cout << "🧘🏻‍♀️ ming - MindGuard v TBD Psychotronic protection." << std::endl;
+            std::cout << "🧘🏻‍♀️ ming - MindGuard v" << mg_version << " Psychotronic protection." << std::endl;
             std::cout << "🧘🏻‍♀️ -c Path to carrier directory (" << carrier_dir << ")" << std::endl;
-            std::cout << "🧘🏻‍♀️ https://zapatopi.net/mindguard" << std::endl;
+            std::cout << "🧘🏻‍♀️ https://zapatopi.net/mindguard " << mg_year << std::endl;
             break;
             
          default:
