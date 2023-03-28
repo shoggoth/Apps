@@ -63,13 +63,14 @@ static void parse_data(char *data, char *matrix);
 static void append_log(char *text, int car, int context, int source, char *infotext, int deciphered, int mode);
 static void diag_display(int id, char *msg, int wut);
 static int rs(int h);
+static void initialize_jam(void);
 static int jam(int data);
 
 static struct carmod module[20];
 static int mod_num = 0;
 static char car_path[2048];
-static bool state_auto = true;
-static int gcar, gmode, max, state_log;
+static bool state_auto = true, state_log = true;
+static int gcar, gmode, max;
 
 // MARK: - Scanning
 
@@ -78,9 +79,19 @@ static bool to_jam = false, to_depsych = false, state_silent = false;
 
 void scan(void) {
    
+   diag_display(0, "Scanning...", 0);
+   initialize_jam();
+   scan_for_signal(2);
+   scan_for_signal(3);
+}
+
+void scan_orig(void) {
+   
+   initialize_jam();
+   
    if (!to_scan & !to_jam) {
       diag_display(0, "Scanning...", 0);
-      scan_for_signal(2);
+      scan_for_signal(3);
    }
    
    return;
@@ -98,13 +109,13 @@ static int scan_for_signal(int data) {
    if ((int)data == 2)
    {
       gmode = 3;
-      to_scan = scan_for_signal(3);
+      //to_scan = scan_for_signal(3);
    }
    if ((int)data == 3)
    {
       //update_scan();
       i++;
-      if (i > 50)
+      if (i > 0)
       {
          i = 0;
          to_scan = false;
@@ -267,8 +278,7 @@ static void parse_decipher(int car, int mode) {
 
    decipher(text, module[car].file, context, index);
 
-   if (state_log)
-        append_log(text, car, context, source, infotext, true, gmode);
+   if (state_log) append_log(text, car, context, source, infotext, true, gmode);
 
    return;
 }
@@ -284,23 +294,22 @@ static int decipher_check(int data) {
       }
    else if ((int)data == 2)
       {
-      c = c + 0.005;
+      c = c + 1.005;
       if (c > 1.0)
          {
          c = 0.0;
          if (gmode == 3)
             gcar = carrier_identify();
-         if (rs(100) > 20)
+         if (rs(100) >= 0)
             parse_decipher(gcar, gmode);
          else
             {
             diag_display(2, "Undecipherable", 0);
-            if (state_log)
-                    append_log("", gcar, 0, 0, "", false, gmode);
+            if (state_log) append_log("", gcar, 0, 0, "", false, gmode);
             }
          to_scan = false;
          if (!to_jam)
-                to_monitor = jam(2);
+                to_monitor = jam(3);
          }
       }
 
@@ -329,7 +338,7 @@ static void initialize_jam(void) {
    struct tm *tm;
    now = time(0);
    tm = localtime(&now);
-   pcheck(tm->tm_sec * tm->tm_mday);
+   srand(tm->tm_sec * tm->tm_mday);
 }
 
 int jam_action(int data) {
@@ -404,7 +413,7 @@ int jam_action(int data) {
 
 int jam_detect(void) {
    
-   int detect = false, r;
+   int detect = true, r;
    r = rs(100)&13;
    if (r == 0)
       detect = true;
@@ -413,11 +422,10 @@ int jam_detect(void) {
 
 int jam(int data) {
    
-   if (data == 2) to_monitor = jam(0);
+   //if (data == 2) to_monitor = jam(0);
    
-   if (!to_monitor)
-      to_monitor = jam(0);
-   else
+   //if (!to_monitor) to_monitor = jam(3);
+   //else
       if (jam_detect() && !to_scan && !to_depsych && !state_silent && !to_jam) {
          to_monitor = false;
          jam_action(0);
