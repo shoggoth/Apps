@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Coin: Codable, Identifiable, Hashable {
+struct Coin: Codable, Identifiable, Hashable, Equatable {
     let id, symbol, name: String
     let image: String
     let currentPrice: Double
@@ -18,6 +18,10 @@ struct Coin: Codable, Identifiable, Hashable {
         return URL(string: image)
     }
     
+    static func ==(lhs: Coin, rhs: Coin) -> Bool {
+        return lhs.id == rhs.id && lhs.symbol == rhs.symbol && lhs.name == rhs.name
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
         case currentPrice = "current_price"
@@ -26,7 +30,7 @@ struct Coin: Codable, Identifiable, Hashable {
         case priceChangePercentage24H = "price_change_percentage_24h"
     }
     
-    enum CoinError: Error, LocalizedError {
+    enum FetchError: Error, LocalizedError {
         case invalidURL
         case serverError
         case invalidData
