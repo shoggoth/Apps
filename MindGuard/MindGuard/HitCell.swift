@@ -52,7 +52,7 @@ struct HitCell: View {
                     .fontWeight(.semibold)
                     .padding(.leading, 4)
                 
-               Text(coin.priceChangePercentage24H.formatted(.percent))
+                Text(coin.priceChangePercentage24H.formatted(.percent))
                     .font(.caption)
                     .padding(.leading, 6)
                     .foregroundColor(coin.priceChangePercentage24H > 0 ? .green : .red)
@@ -67,6 +67,6 @@ struct HitCell: View {
 
 struct HitCell_Previews: PreviewProvider {
     static var previews: some View {
-       HitCell(coin: Coin.sample)
+        HitCell(coin: Coin.sample)
     }
 }
