@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FF20BC4029D314DA00A0F8F5 /* ming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF68228429CDB16300A0ED3C /* ming.cpp */; };
+		FF20BC4929D3180100A0F8F5 /* MindGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC4829D3180100A0F8F5 /* MindGuardApp.swift */; };
+		FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC4A29D3180100A0F8F5 /* MainView.swift */; };
+		FF20BC4D29D3180200A0F8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */; };
+		FF20BC5029D3180200A0F8F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */; };
+		FF20BC5529D3192600A0F8F5 /* HitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5429D3192600A0F8F5 /* HitView.swift */; };
+		FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5629D31C2600A0F8F5 /* Coin.swift */; };
+		FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5A29D320B500A0F8F5 /* HitCell.swift */; };
 		FF2E450B29D1EF0800FDD9F5 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF68228029CDB01300A0ED3C /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68227B29CDB00100A0ED3C /* libzapato.a */; };
 		FF68228529CDB16300A0ED3C /* ming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF68228429CDB16300A0ED3C /* ming.cpp */; };
@@ -39,6 +46,15 @@
 
 /* Begin PBXFileReference section */
 		FF20BC4129D3150700A0F8F5 /* docs */ = {isa = PBXFileReference; lastKnownFileType = folder; path = docs; sourceTree = "<group>"; };
+		FF20BC4629D3180100A0F8F5 /* MindGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MindGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF20BC4829D3180100A0F8F5 /* MindGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindGuardApp.swift; sourceTree = "<group>"; };
+		FF20BC4A29D3180100A0F8F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FF20BC5429D3192600A0F8F5 /* HitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitView.swift; sourceTree = "<group>"; };
+		FF20BC5629D31C2600A0F8F5 /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
+		FF20BC5929D31E7600A0F8F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		FF20BC5A29D320B500A0F8F5 /* HitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitCell.swift; sourceTree = "<group>"; };
 		FF68226F29CDAFB700A0ED3C /* ming */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ming; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF68227B29CDB00100A0ED3C /* libzapato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzapato.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF68228429CDB16300A0ED3C /* ming.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ming.cpp; sourceTree = "<group>"; };
@@ -59,6 +75,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		FF20BC4329D3180100A0F8F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF68226C29CDAFB700A0ED3C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,9 +100,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF20BC4729D3180100A0F8F5 /* MindGuard */ = {
+			isa = PBXGroup;
+			children = (
+				FF20BC4829D3180100A0F8F5 /* MindGuardApp.swift */,
+				FF20BC4A29D3180100A0F8F5 /* MainView.swift */,
+				FF20BC5429D3192600A0F8F5 /* HitView.swift */,
+				FF20BC5A29D320B500A0F8F5 /* HitCell.swift */,
+				FF20BC5829D31C2A00A0F8F5 /* Model */,
+				FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */,
+				FF20BC5929D31E7600A0F8F5 /* Info.plist */,
+				FF20BC4E29D3180200A0F8F5 /* Preview Content */,
+			);
+			path = MindGuard;
+			sourceTree = "<group>";
+		};
+		FF20BC4E29D3180200A0F8F5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FF20BC5829D31C2A00A0F8F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FF20BC5629D31C2600A0F8F5 /* Coin.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		FF68226429CDABE700A0ED3C = {
 			isa = PBXGroup;
 			children = (
+				FF20BC4729D3180100A0F8F5 /* MindGuard */,
 				FF68228329CDB16300A0ED3C /* zapato */,
 				FF68227029CDAFB700A0ED3C /* Products */,
 				FF68227F29CDB01300A0ED3C /* Frameworks */,
@@ -91,6 +146,7 @@
 			children = (
 				FF68226F29CDAFB700A0ED3C /* ming */,
 				FF68227B29CDB00100A0ED3C /* libzapato.a */,
+				FF20BC4629D3180100A0F8F5 /* MindGuard.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +204,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		FF20BC4529D3180100A0F8F5 /* MindGuard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FF20BC5129D3180200A0F8F5 /* Build configuration list for PBXNativeTarget "MindGuard" */;
+			buildPhases = (
+				FF20BC4229D3180100A0F8F5 /* Sources */,
+				FF20BC4329D3180100A0F8F5 /* Frameworks */,
+				FF20BC4429D3180100A0F8F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MindGuard;
+			productName = MindGuard;
+			productReference = FF20BC4629D3180100A0F8F5 /* MindGuard.app */;
+			productType = "com.apple.product-type.application";
+		};
 		FF68226E29CDAFB700A0ED3C /* ming */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = FF68227429CDAFB700A0ED3C /* Build configuration list for PBXNativeTarget "ming" */;
@@ -190,8 +263,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					FF20BC4529D3180100A0F8F5 = {
+						CreatedOnToolsVersion = 14.2;
+					};
 					FF68226E29CDAFB700A0ED3C = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -213,13 +290,38 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				FF20BC4529D3180100A0F8F5 /* MindGuard */,
 				FF68226E29CDAFB700A0ED3C /* ming */,
 				FF68227A29CDB00100A0ED3C /* zapato */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		FF20BC4429D3180100A0F8F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF20BC5029D3180200A0F8F5 /* Preview Assets.xcassets in Resources */,
+				FF20BC4D29D3180200A0F8F5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		FF20BC4229D3180100A0F8F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */,
+				FF20BC5529D3192600A0F8F5 /* HitView.swift in Sources */,
+				FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */,
+				FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */,
+				FF20BC4929D3180100A0F8F5 /* MindGuardApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		FF68226B29CDAFB700A0ED3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -248,6 +350,166 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		FF20BC5229D3180200A0F8F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"MindGuard/Preview Content\"";
+				DEVELOPMENT_TEAM = 5F9CYF5K3F;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MindGuard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.MindGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FF20BC5329D3180200A0F8F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"MindGuard/Preview Content\"";
+				DEVELOPMENT_TEAM = 5F9CYF5K3F;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MindGuard/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = mobi.dogstar.MindGuard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		FF68226929CDABE700A0ED3C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -499,6 +761,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		FF20BC5129D3180200A0F8F5 /* Build configuration list for PBXNativeTarget "MindGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FF20BC5229D3180200A0F8F5 /* Debug */,
+				FF20BC5329D3180200A0F8F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		FF68226829CDABE700A0ED3C /* Build configuration list for PBXProject "MindGuard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
