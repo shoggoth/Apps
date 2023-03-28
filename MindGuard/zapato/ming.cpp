@@ -13,6 +13,17 @@
 
 std::string carrier_dir = ".ming/carriers";
 
+static void process_options(int argc, char * const argv[]);
+static void start();
+
+int main(const int argc, char * const argv[]) {
+   
+   process_options(argc, argv);
+   start();
+
+   return 0;
+}
+
 void start() {
    
    init_mods(carrier_dir.c_str());
