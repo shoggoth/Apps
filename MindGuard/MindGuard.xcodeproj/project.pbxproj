@@ -12,7 +12,7 @@
 		FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC4A29D3180100A0F8F5 /* MainView.swift */; };
 		FF20BC4D29D3180200A0F8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */; };
 		FF20BC5029D3180200A0F8F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */; };
-		FF20BC5529D3192600A0F8F5 /* HitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5429D3192600A0F8F5 /* HitView.swift */; };
+		FF20BC5529D3192600A0F8F5 /* HitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5429D3192600A0F8F5 /* HitListView.swift */; };
 		FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5629D31C2600A0F8F5 /* Coin.swift */; };
 		FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5A29D320B500A0F8F5 /* HitCell.swift */; };
 		FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E387C29D46EC600A72C90 /* ChalkView.swift */; };
@@ -24,6 +24,7 @@
 		FF68229429CDCEDD00A0ED3C /* carrier.h in Headers */ = {isa = PBXBuildFile; fileRef = FF68229229CDCEDD00A0ED3C /* carrier.h */; };
 		FF68229829CDD39300A0ED3C /* mindguard.h in Headers */ = {isa = PBXBuildFile; fileRef = FF68229629CDD39300A0ED3C /* mindguard.h */; };
 		FF7EFAAB29D47E5F002DA633 /* DePsych.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */; };
+		FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFAAC29D481E9002DA633 /* HitMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +56,7 @@
 		FF20BC4A29D3180100A0F8F5 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FF20BC5429D3192600A0F8F5 /* HitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitView.swift; sourceTree = "<group>"; };
+		FF20BC5429D3192600A0F8F5 /* HitListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitListView.swift; sourceTree = "<group>"; };
 		FF20BC5629D31C2600A0F8F5 /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		FF20BC5929D31E7600A0F8F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF20BC5A29D320B500A0F8F5 /* HitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitCell.swift; sourceTree = "<group>"; };
@@ -80,6 +81,7 @@
 		FF68229529CDD39300A0ED3C /* mindguard.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mindguard.c; sourceTree = "<group>"; };
 		FF68229629CDD39300A0ED3C /* mindguard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mindguard.h; sourceTree = "<group>"; };
 		FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = DePsych.scnassets; sourceTree = "<group>"; };
+		FF7EFAAC29D481E9002DA633 /* HitMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +117,8 @@
 				FF20BC4A29D3180100A0F8F5 /* MainView.swift */,
 				FF2E387C29D46EC600A72C90 /* ChalkView.swift */,
 				FF32E62A29D47C0D00571ADE /* DepsychView.swift */,
-				FF20BC5429D3192600A0F8F5 /* HitView.swift */,
+				FF7EFAAC29D481E9002DA633 /* HitMapView.swift */,
+				FF20BC5429D3192600A0F8F5 /* HitListView.swift */,
 				FF20BC5A29D320B500A0F8F5 /* HitCell.swift */,
 				FF20BC5829D31C2A00A0F8F5 /* Model */,
 				FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */,
@@ -327,8 +330,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */,
 				FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */,
-				FF20BC5529D3192600A0F8F5 /* HitView.swift in Sources */,
+				FF20BC5529D3192600A0F8F5 /* HitListView.swift in Sources */,
 				FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */,
 				FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */,
 				FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */,

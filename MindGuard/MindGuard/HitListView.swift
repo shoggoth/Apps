@@ -1,5 +1,5 @@
 //
-//  HitView.swift
+//  HitListView.swift
 //  MindGuard
 //
 //  Created by Richard Henry on 28/03/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HitView: View {
+struct HitListView: View {
     @StateObject private var viewModel = ViewModel()
     @State private var alertShown = false
     
@@ -36,13 +36,13 @@ struct HitView: View {
 
 struct HitView_Previews: PreviewProvider {
     static var previews: some View {
-        HitView()
+        HitListView()
     }
 }
 
 // MARK: - ViewModel
 
-extension HitView {
+extension HitListView {
     @MainActor class ViewModel: ObservableObject {
         @Published private(set) var coins = [Coin]()
         @Published private(set) var error: Error?

@@ -10,11 +10,13 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
+            HitMapView()
+                .tabItem { Label("HitMap", systemImage: "list.dash") }
             DepsychView()
                 .tabItem { Label("Depsych", systemImage: "list.dash") }
             ChalkView()
                 .tabItem { Label("PsyChalk", systemImage: "list.dash") }
-            HitView()
+            HitListView()
                 .tabItem { Label("Hits", systemImage: "list.dash") }
         }
     }
