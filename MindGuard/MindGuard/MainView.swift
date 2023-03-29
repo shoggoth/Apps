@@ -10,6 +10,8 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
+            DepsychView()
+                .tabItem { Label("Depsych", systemImage: "list.dash") }
             ChalkView()
                 .tabItem { Label("PsyChalk", systemImage: "list.dash") }
             HitView()
@@ -18,7 +20,7 @@ struct MainView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
     }

@@ -11,10 +11,11 @@ import RealityKit
 struct ChalkView: View {
     var body: some View {
         ChalkViewContainer()
+            .ignoresSafeArea(.all, edges: [.top, .trailing, .leading])
     }
 }
 
-struct ChalkViewContainer: UIViewRepresentable {
+private struct ChalkViewContainer: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARView {
         
@@ -27,7 +28,6 @@ struct ChalkViewContainer: UIViewRepresentable {
         arView.scene.anchors.append(boxAnchor)
         
         return arView
-        
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {}
