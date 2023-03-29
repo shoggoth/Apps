@@ -10,7 +10,7 @@ import Foundation
 struct Coin: Codable, Identifiable, Hashable, Equatable {
     let id, symbol, name: String
     let image: String
-    let currentPrice: Double
+    let currentPrice: Decimal
     let marketCapRank: Int
     let priceChange24H, priceChangePercentage24H: Double
     
@@ -18,9 +18,7 @@ struct Coin: Codable, Identifiable, Hashable, Equatable {
         return URL(string: image)
     }
     
-    static func ==(lhs: Coin, rhs: Coin) -> Bool {
-        return lhs.id == rhs.id && lhs.symbol == rhs.symbol && lhs.name == rhs.name
-    }
+    static func ==(lhs: Coin, rhs: Coin) -> Bool { lhs.id == rhs.id }
     
     enum CodingKeys: String, CodingKey {
         case id, symbol, name, image
@@ -39,11 +37,11 @@ struct Coin: Codable, Identifiable, Hashable, Equatable {
         var errorDescription: String? {
             switch self {
             case .invalidURL:
-                return ""
+                return "The requested URL is invalid."
             case .serverError:
-                return "There was an error with the server. Please try again later"
+                return "There was an error communicating with the server."
             case .invalidData:
-                return "The coin data is invalid. Please try again later"
+                return "The data returned is in an invalid format."
             case .unknown(let error):
                 return error.localizedDescription
             }
