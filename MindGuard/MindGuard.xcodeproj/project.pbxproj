@@ -15,6 +15,8 @@
 		FF20BC5529D3192600A0F8F5 /* HitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5429D3192600A0F8F5 /* HitView.swift */; };
 		FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5629D31C2600A0F8F5 /* Coin.swift */; };
 		FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5A29D320B500A0F8F5 /* HitCell.swift */; };
+		FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E387C29D46EC600A72C90 /* ChalkView.swift */; };
+		FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = FF2E38A029D475AE00A72C90 /* Cube.rcproject */; };
 		FF2E450B29D1EF0800FDD9F5 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF68228029CDB01300A0ED3C /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68227B29CDB00100A0ED3C /* libzapato.a */; };
 		FF68228529CDB16300A0ED3C /* ming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF68228429CDB16300A0ED3C /* ming.cpp */; };
@@ -55,6 +57,8 @@
 		FF20BC5629D31C2600A0F8F5 /* Coin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		FF20BC5929D31E7600A0F8F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FF20BC5A29D320B500A0F8F5 /* HitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitCell.swift; sourceTree = "<group>"; };
+		FF2E387C29D46EC600A72C90 /* ChalkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChalkView.swift; sourceTree = "<group>"; };
+		FF2E38A029D475AE00A72C90 /* Cube.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Cube.rcproject; sourceTree = "<group>"; };
 		FF68226F29CDAFB700A0ED3C /* ming */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ming; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF68227B29CDB00100A0ED3C /* libzapato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzapato.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF68228429CDB16300A0ED3C /* ming.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ming.cpp; sourceTree = "<group>"; };
@@ -105,10 +109,12 @@
 			children = (
 				FF20BC4829D3180100A0F8F5 /* MindGuardApp.swift */,
 				FF20BC4A29D3180100A0F8F5 /* MainView.swift */,
+				FF2E387C29D46EC600A72C90 /* ChalkView.swift */,
 				FF20BC5429D3192600A0F8F5 /* HitView.swift */,
 				FF20BC5A29D320B500A0F8F5 /* HitCell.swift */,
 				FF20BC5829D31C2A00A0F8F5 /* Model */,
 				FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */,
+				FF2E38A029D475AE00A72C90 /* Cube.rcproject */,
 				FF20BC5929D31E7600A0F8F5 /* Info.plist */,
 				FF20BC4E29D3180200A0F8F5 /* Preview Content */,
 			);
@@ -316,8 +322,10 @@
 			files = (
 				FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */,
 				FF20BC5529D3192600A0F8F5 /* HitView.swift in Sources */,
+				FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */,
 				FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */,
 				FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */,
+				FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */,
 				FF20BC4929D3180100A0F8F5 /* MindGuardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +417,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MindGuard/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Gimme Camera";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -486,6 +495,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MindGuard/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Gimme Camera";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

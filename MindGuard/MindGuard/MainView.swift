@@ -10,6 +10,8 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
+            ChalkView()
+                .tabItem { Label("PsyChalk", systemImage: "list.dash") }
             HitView()
                 .tabItem { Label("Hits", systemImage: "list.dash") }
         }
