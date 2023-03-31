@@ -59,17 +59,17 @@ static bool to_jam = false, to_depsych = false, state_silent = false;
 
 static void decipher(char *data, char *mod_path, int context, int index);
 
-void scan_alt(void) {
+void scan(void) {
     
     //diag_display(0, "Scanning...", 0);
     //scan_for_signal(2);
     //scan_for_signal(3);
     char text[256];
-    int car = 8, context = 0, index = 0;
+    int car = 0, context = 0, index = 0;
     decipher(text, module_list[car].file, context, index);
 }
 
-void scan(void) {
+void scan_alt(void) {
    
    initialize_jam();
    
@@ -174,7 +174,7 @@ static void parse_data(char *data, char *matrix) {
    
    char buffer[256];
    strcpy(buffer, data);
-   apply_matrix(buffer, matrix, max);
+   apply_matrix(buffer, matrix, max); // RJH Setting the phase to somethig different is interesting.
    strcpy(matrix, buffer);
    return;
 }
@@ -250,8 +250,6 @@ static void parse_decipher(int car, int mode) {
     if (state_log) append_log(text, car, context, source, infotext, true, gmode);
     context_name_label(text, context);
     diag_display(4, text, 0);
-    
-    return;
 }
 
 static int decipher_check(int data) {
