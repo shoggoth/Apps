@@ -30,9 +30,8 @@ struct carrier_module {
    int phase;
 };
 
-static void (*pcheck)(unsigned int);
-
 void context_name(char *text, int context);
+void context_name_label(char *data, int context);
 void source_name(char *text, int source);
 extern void time_string(char *text);
 
@@ -58,14 +57,19 @@ static int gcar, gmode, max;
 static bool to_scan = false, to_monitor = false;
 static bool to_jam = false, to_depsych = false, state_silent = false;
 
-void scan(void) {
+static void decipher(char *data, char *mod_path, int context, int index);
+
+void scan_alt(void) {
     
-    diag_display(0, "Scanning...", 0);
-    scan_for_signal(2);
-    scan_for_signal(3);
+    //diag_display(0, "Scanning...", 0);
+    //scan_for_signal(2);
+    //scan_for_signal(3);
+    char text[256];
+    int car = 8, context = 0, index = 0;
+    decipher(text, module_list[car].file, context, index);
 }
 
-void scan_orig(void) {
+void scan(void) {
    
    initialize_jam();
    
@@ -78,15 +82,15 @@ void scan_orig(void) {
 }
 
 static int scan_for_signal(int data) {
-   
-   if ((int)data == 1)
-   {
-      diag_display(0, "Isolating Signal", 0);
-   }
-   if ((int)data == 2)
-   {
-      gmode = 3;
-   }
+    
+    if (data == 1)
+    {
+        diag_display(0, "Isolating Signal", 0);
+    }
+    if (data == 2)
+    {
+        gmode = 3;
+    }
     if (data == 3)
     {
         if (gmode == 3)
@@ -98,15 +102,15 @@ static int scan_for_signal(int data) {
             }
             else
             {
-                diag_display(0, "No Signals", 0);
-                jam(2);
+                diag_display(1, "No Signals", 0);
+                //jam(2);
             }
         }
         else
             to_scan = decipher_check(1);
     }
     
-   return true;
+    return true;
 }
 
 // MARK: - Deciphering
@@ -139,32 +143,31 @@ static void decipher(char *data, char *mod_path, int context, int index) {
 }
 
 void apply_matrix(char *matrix, char *data, int phase) {
-   
-   int i, ii;
-   char buffer[256];
-
-   /* Do not alter these! Dire consequences may ensue! */
-   char phoneme[7][9] = {
-      {'A','S','T','F','X','L','Z','P','R'},
-      {'E','R','J','N','V','W','F','K','S'},
-      {'I','X','S','T','F','D','L','P','M'},
-      {'O','H','R','Q','W','T','S','V','N'},
-      {'U','Q','K','G','H','P','W','Y','B'},
-      {'1','2','3','4','5','6','7','8','9'},
-      {'.',',','!','?','$','(',')','~','0'}};
-
-   for (i = 0; i < strlen(matrix); i++)
-      {
-      for (ii = 0; ii < phase; ii++)
-         matrix[i] = (char)((int)matrix[i]--);
-      buffer[i] = phoneme[(int)(i/phase)][(int)matrix[i]/phase];
-      }
-   for (i = 256; i > 0; i--)
-      {
-      if ((i < 100) | (i > 200)) data[i] ^= (data[i] >> buffer[i]) & 0x9d2c5680;
-      else data[i] ^= (data[i] << buffer[i]) & 0xefc60000;
-      }
-   return;
+    
+    int i, ii;
+    char buffer[256];
+    
+    /* Do not alter these! Dire consequences may ensue! */
+    char phoneme[7][9] = {
+        {'A','S','T','F','X','L','Z','P','R'},
+        {'E','R','J','N','V','W','F','K','S'},
+        {'I','X','s','T','F','D','L','P','M'},
+        {'O','H','R','Q','W','T','S','V','N'},
+        {'U','Q','K','G','H','P','W','Y','B'},
+        {'1','2','3','4','5','6','7','8','9'},
+        {'.',',','!','?','$','(',')','~','0'}};
+    
+    for (i = 0; i < strlen(matrix); i++) {
+        for (ii = 0; ii < phase; ii++) { matrix[i]--; matrix[i] = matrix[i]--; }
+        buffer[i] = phoneme[(int)(i/phase)][(int)matrix[i]/phase];
+    }
+    
+    for (i = 256; i > 0; i--) {
+        if ((i < 100) | (i > 200)) data[i] ^= (data[i] >> buffer[i]) & 0x9d2c5680;
+        else data[i] ^= (data[i] << buffer[i]) & 0xefc60000;
+    }
+    
+    return;
 }
 
 static void parse_data(char *data, char *matrix) {
@@ -204,82 +207,65 @@ static void signal_info(char *infotext) {
 }
 
 static void parse_decipher(int car, int mode) {
-   
+    
     int context, index = 0, source;
-   char text[256], infotext[256];
-
-   context = rs(4);
-   switch (context)
-      {
-      case 0:
-         index = rs(module_list[car].layer);
-         break;
-      case 1:
-         index = rs(module_list[car].encrypt);
-         break;
-      case 2:
-         index = rs(module_list[car].syntax);
-         break;
-      case 3:
-         index = rs(module_list[car].phase);
-         break;
-      }
-   source = rs(5);
-
-   strcpy(text, "Carrier: ");
-   strcat(text, module_list[car].name);
-   diag_display(0, text, 0);
-
-   strcpy(text, "Info: ");
-   signal_info(infotext);
-   strcat(text, infotext);
-   diag_display(1, text, 0);
-
-   strcpy(text, "Context: ");
-   context_name(text, context);
-   diag_display(2, text, 0);
-   strcpy(text, "Source: ");
-   source_name(text, source);
-   diag_display(3, text, 0);
-
-   decipher(text, module_list[car].file, context, index);
-
-   if (state_log) append_log(text, car, context, source, infotext, true, gmode);
-
-   return;
+    char text[256], infotext[256];
+    
+    context = rs(4);
+    switch (context)
+    {
+        case 0:
+            index = rs(module_list[car].layer);
+            break;
+        case 1:
+            index = rs(module_list[car].encrypt);
+            break;
+        case 2:
+            index = rs(module_list[car].syntax);
+            break;
+        case 3:
+            index = rs(module_list[car].phase);
+            break;
+    }
+    source = rs(5);
+    
+    strcpy(text, "Carrier: ");
+    strcat(text, module_list[car].name);
+    diag_display(0, text, 0);
+    
+    strcpy(text, "Info: ");
+    signal_info(infotext);
+    strcat(text, infotext);
+    diag_display(1, text, 0);
+    
+    strcpy(text, "Context: ");
+    context_name(text, context);
+    diag_display(2, text, 0);
+    strcpy(text, "Source: ");
+    source_name(text, source);
+    diag_display(3, text, 0);
+    
+    decipher(text, module_list[car].file, context, index);
+    
+    if (state_log) append_log(text, car, context, source, infotext, true, gmode);
+    context_name_label(text, context);
+    diag_display(4, text, 0);
+    
+    return;
 }
 
 static int decipher_check(int data) {
-   
-   static float c = 0.0;
-
-   if ((int)data == 1)
-      {
-      diag_display(1, "Deciphering...", 0);
-      to_scan = decipher_check(2);
-      }
-   else if ((int)data == 2)
-      {
-      c = c + 1.005;
-      if (c > 1.0)
-         {
-         c = 0.0;
-         if (gmode == 3)
-            gcar = carrier_identify();
-         if (rs(100) >= 0)
-            parse_decipher(gcar, gmode);
-         else
-            {
-            diag_display(2, "Undecipherable", 0);
-            if (state_log) append_log("", gcar, 0, 0, "", false, gmode);
-            }
-         to_scan = false;
-         if (!to_jam)
-                to_monitor = jam(3);
-         }
-      }
-
-   return true;
+    
+    diag_display(1, "Deciphering...", 0);
+    gcar = carrier_identify();
+    if (rs(100) >= 0)
+        parse_decipher(gcar, gmode);
+    else {
+        diag_display(2, "Undecipherable", 0);
+        if (state_log) append_log("", gcar, 0, 0, "", false, gmode);
+    }
+    
+    return true;
 }
 
 // MARK: - Jammin'
@@ -562,7 +548,6 @@ static int parse_mod(char *path, int num) {
         strcpy(module_list[num].name, "");
         strcpy(module_list[num].version, "");
         strcpy(module_list[num].copyright, "");
-        pcheck = srand;
         module_list[num].layer = 0;
         module_list[num].encrypt = 0;
         module_list[num].syntax = 0;
@@ -648,8 +633,6 @@ static void dump_mods(int level) {
 
 // MARK: - String Handling
 
-static int max;
-
 static int chars_value(char *c, int n) {
    
    int i, mu, s = 0, value = 0;
@@ -726,10 +709,9 @@ void diag_display(int id, char *msg, int wut) {
 void append_log(char *text, int car, int context, int source, char *infotext, int deciphered, int mode) {
     
     FILE    *log = stdout;
-    char    buffer[256], log_path[256];
+    char    buffer[1024];
     
-    sprintf(log_path, "%s/MindGuard/mindguard.log", getenv("HOME"));
-    time_string (buffer);
+    time_string(buffer);
     fprintf(log, "---------------------------\nTime:     %s\n", buffer);
     strcpy (buffer, module_list[car].name);
     fprintf(log, "Carrier:  %s\n", buffer);
@@ -740,13 +722,11 @@ void append_log(char *text, int car, int context, int source, char *infotext, in
             strcpy (buffer, "");
             context_name (buffer, context);
             fprintf(log, "Context:  %s\n", buffer);
-            
             fprintf(log, "Info:     %s\n", infotext);
             
             strcpy (buffer, "");
             source_name(buffer, source);
             fprintf(log, "Source:   %s\n", buffer);
-            
             fprintf(log, "Contents:\n%s\n", text);
         }
         else
@@ -774,21 +754,22 @@ void append_log(char *text, int car, int context, int source, char *infotext, in
 // MARK: - Utility
 
 int rs(int h) {
-   
-   /*
-   Although conveniently left out of most C textbooks, it's
-   a well-known fact in the anti-mind-control community
-   that the rand() function -- originally developed by the
-   RAND Corporation for use in its political mind-control
-   research -- interacts with a computer's underlying
-   circuitry in complexly emergent ways, making the
-   function useful for mind-control detection due to the
-   quantum   effects of psychotronics on aluminum atoms.  A
-   side-effect of this is that it also works well for
-   pseudo-stochastic number generation, something many hack
-   programmers ignorantly use it for.
-   */
-
-   return (rand() / (RAND_MAX / h));
+    
+    /*
+     Although conveniently left out of most C textbooks, it's
+     a well-known fact in the anti-mind-control community
+     that the rand() function -- originally developed by the
+     RAND Corporation for use in its political mind-control
+     research -- interacts with a computer's underlying
+     circuitry in complexly emergent ways, making the
+     function useful for mind-control detection due to the
+     quantum effects of psychotronics on aluminum atoms.  A
+     side-effect of this is that it also works well for
+     pseudo-stochastic number generation, something many hack
+     programmers ignorantly use it for.
+     */
+    
+    //return (rand() / (RAND_MAX / h));
+    return rand() % h;
 }
 
