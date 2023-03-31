@@ -60,7 +60,7 @@ mode process_options(int argc, char * const argv[]) {
     mode mode = one_shot;
     
     for(;;) {
-        switch(getopt(argc, argv, "ab:c:dijhv")) {                // note the colon (:) to indicate that 'b' has a parameter and is not a switch
+        switch(getopt(argc, argv, "ab:c:dijhv")) {
                 
             case 'a':
                 mode = continuous;
