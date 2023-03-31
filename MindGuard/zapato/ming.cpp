@@ -11,24 +11,42 @@
 #include <string>
 #include <getopt.h>
 
+enum mode { one_shot, interactive, continuous, dump };
+
 std::string carrier_dir = ".ming";
 
-static void process_options(int argc, char * const argv[]);
-static void start();
+static mode process_options(int argc, char * const argv[]);
+static void process_command_line();
+static void dump_carrier_messages();
+
 
 int main(const int argc, char * const argv[]) {
     
-    process_options(argc, argv);
+    auto mode = process_options(argc, argv);
+    
+    switch (mode) {
+        case dump:
+            dump_carrier_messages();
+            break;
+            
+        case interactive:
+            process_command_line();
+            break;
+            
+        default:
+            std::cout << "mode " << mode << std::endl;
+            break;
+    }
     
     return 0;
 }
 
-void start() {
+static void dump_carrier_messages() {
     
     init_mods(carrier_dir.c_str());
 }
 
-void process() {
+static void process_command_line() {
  
     std::string line;
     while (std::getline(std::cin, line)) {
@@ -37,13 +55,15 @@ void process() {
     }
 }
 
-void process_options(int argc, char * const argv[]) {
+mode process_options(int argc, char * const argv[]) {
+    
+    mode mode = one_shot;
     
     for(;;) {
         switch(getopt(argc, argv, "ab:c:dijhv")) {                // note the colon (:) to indicate that 'b' has a parameter and is not a switch
                 
             case 'a':
-                start();
+                mode = continuous;
                 continue;
                 
             case 'b':
@@ -55,12 +75,11 @@ void process_options(int argc, char * const argv[]) {
                 continue;
                 
             case 'd':
-                std::cout << "Dump all modules mode set" << std::endl;
+                mode = dump;
                 continue;
                 
             case 'i':
-                std::cout << "Interactive mode set" << std::endl;
-                process();
+                mode = interactive;
                 continue;
                 
             case 'j':
@@ -74,12 +93,13 @@ void process_options(int argc, char * const argv[]) {
                 std::cout << "🧘🏻‍♀️ -c Path to carrier directory (" << carrier_dir << ")" << std::endl;
                 std::cout << "🧘🏻‍♀️ -i Interactive (command) mode" << std::endl;
                 std::cout << "🧘🏻‍♀️ https://zapatopi.net/mindguard " << mg_year << std::endl;
-                break;
+                continue;
                 
             default:
                 break;
         }
-        
         break;
     }
+    
+    return mode;
 }
