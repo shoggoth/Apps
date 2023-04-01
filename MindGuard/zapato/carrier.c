@@ -18,6 +18,8 @@
 typedef enum { false, true } bool;
 const char *mg_version = "0.0.0.4";
 const char *mg_year = "2003";
+const char *algo_name[5] = {"Dishevel-Bippsie", "LZI", "LZII", "PsyDET", "Xebec"};
+const char *scan_mode_name[7] = {"EM", "VLF", "ELF", "ULF", "RLF", "Sonic", "Psi"};
 
 struct carrier_module {
    char name[256];
