@@ -18,6 +18,8 @@ struct MainView: View {
                 .tabItem { Label("PsyChalk", systemImage: "list.dash") }
             HitListView()
                 .tabItem { Label("Hits", systemImage: "list.dash") }
+            PsIdentView()
+                .tabItem { Label("PsIdent", systemImage: "list.dash") }
         }
     }
 }
