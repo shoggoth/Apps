@@ -61,14 +61,50 @@ static bool to_jam = false, to_depsych = false, state_silent = false;
 
 static void decipher(char *data, char *mod_path, int context, int index);
 
+enum { tbd } context;
+
+void dump(void) {
+    
+    char text[1024];
+    
+    for (int m = 0; m < module_count; m++) {
+        
+        for (int c = 0; c < 4; c++) {
+            
+            int indices = 0;
+            
+            switch (c) {
+                case 0:
+                    indices = module_list[m].layer;
+                    break;
+                case 1:
+                    indices = module_list[m].encrypt;
+                    break;
+                case 2:
+                    indices = module_list[m].syntax;
+                    break;
+                case 3:
+                    indices = module_list[m].phase;
+                    break;
+            }
+            
+            for (int i = 0; i < indices; i++) {
+                
+                decipher(text, module_list[m].file, c, i);
+            }
+        }
+    }
+}
+
 void scan(void) {
     
+    dump();
     //diag_display(0, "Scanning...", 0);
     //scan_for_signal(2);
     //scan_for_signal(3);
-    char text[256];
-    int car = 0, context = 0, index = 0;
-    decipher(text, module_list[car].file, context, index);
+    //char text[256];
+    //int car = 0, context = 0, index = 0;
+    //decipher(text, module_list[car].file, context, index);
 }
 
 void scan_alt(void) {
@@ -160,7 +196,7 @@ void apply_matrix(char *matrix, char *data, int phase) {
         {'.',',','!','?','$','(',')','~','0'}};
     
     for (i = 0; i < strlen(matrix); i++) {
-        for (ii = 0; ii < phase; ii++) { matrix[i]--; matrix[i] = matrix[i]--; }
+        for (ii = 0; ii < phase; ii++) matrix[i] = --matrix[i];
         buffer[i] = phoneme[(int)(i/phase)][(int)matrix[i]/phase];
     }
     
