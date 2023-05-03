@@ -23,7 +23,7 @@ struct PsIdentView: View {
             Button("Capsule Button") {
                 print("pressed")
             }
-            .buttonStyle(BlueButton())
+            .buttonStyle(GreyButton())
             Button("Capsule Button") {
                 print("pressed")
             }
@@ -38,12 +38,14 @@ struct PsIdentView_Previews: PreviewProvider {
     }
 }
 
-struct BlueButton: ButtonStyle {
+struct GreyButton: ButtonStyle {
+    @Environment(\.colorScheme) var colorScheme
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding()
-            .background(Color(red: 0, green: 0, blue: 0.5))
-            .foregroundColor(.accentColor)
+            .background(Color(red: 0.5, green: 0.5, blue: 0.5))
+            .foregroundColor(colorScheme == .dark ? .white : .black)
             .clipShape(Capsule())
     }
 }
