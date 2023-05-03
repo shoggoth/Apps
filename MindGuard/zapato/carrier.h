@@ -14,8 +14,10 @@ extern "C" {
 
 void init_mods(const char *mg_path);
 
-extern const char *mg_version;
-extern const char *mg_year;
+const char *mg_version = "0.0.0.4";
+const char *mg_year = "2003";
+
+void dump_carriers();
 
 #ifdef __cplusplus
 }

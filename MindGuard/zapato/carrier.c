@@ -16,8 +16,6 @@
 #include <dirent.h>
 
 typedef enum { false, true } bool;
-const char *mg_version = "0.0.0.4";
-const char *mg_year = "2003";
 const char *algo_name[5] = {"Dishevel-Bippsie", "LZI", "LZII", "PsyDET", "Xebec"};
 const char *scan_mode_name[7] = {"EM", "VLF", "ELF", "ULF", "RLF", "Sonic", "Psi"};
 
@@ -57,13 +55,13 @@ static int gcar, gmode, max;
 // MARK: - Scanning
 
 static bool to_scan = false, to_monitor = false;
-static bool to_jam = false, to_depsych = false, state_silent = false;
+static bool to_jam = false;
 
 static void decipher(char *data, char *mod_path, int context, int index);
 
 enum { tbd } context;
 
-void dump(void) {
+void dump_carriers(void) {
     
     char text[1024];
     
@@ -98,13 +96,12 @@ void dump(void) {
 
 void scan(void) {
     
-    dump();
-    //diag_display(0, "Scanning...", 0);
-    //scan_for_signal(2);
-    //scan_for_signal(3);
-    //char text[256];
-    //int car = 0, context = 0, index = 0;
-    //decipher(text, module_list[car].file, context, index);
+    diag_display(0, "Scanning...", 0);
+    scan_for_signal(2);
+    scan_for_signal(3);
+    char text[256];
+    int car = 0, context = 0, index = 0;
+    decipher(text, module_list[car].file, context, index);
 }
 
 void scan_alt(void) {
@@ -533,7 +530,7 @@ static int load_mods(void) {
     return success;
 }
 
-void sort_added_mod() {
+void sort_added_mod(void) {
     
     struct carrier_module module_temp;
     int i, j;
