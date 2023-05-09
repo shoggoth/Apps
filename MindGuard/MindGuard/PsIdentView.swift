@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PsIdentView: View {
+    @State private var sliderValue = 0.5
+    
     var body: some View {
         VStack(spacing: 23) {
             Text("Biorythm and Eponymlog go here.")
@@ -28,6 +30,16 @@ struct PsIdentView: View {
                 print("pressed")
             }
             .buttonStyle(GrowingButton())
+            VStack(spacing: 20) {
+                Button("Button 1") {
+                }.accentColor(nil)
+                
+                Button("Button 2") {
+                    
+                }.accentColor(.green)
+                
+                Slider(value: $sliderValue)
+            }.accentColor(.pink)
         }
     }
 }
