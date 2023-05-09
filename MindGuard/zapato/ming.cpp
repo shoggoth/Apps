@@ -6,6 +6,7 @@
 //
 
 #include "carrier.h"
+#include "zapato.h"
 
 #include <iostream>
 #include <string>

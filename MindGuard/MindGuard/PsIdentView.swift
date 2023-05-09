@@ -17,6 +17,7 @@ struct PsIdentView: View {
                 print("pressed")
             }
             Button("Capsule Button") {
+                test_zapato()
                 print("pressed")
             }
             .padding()

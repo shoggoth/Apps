@@ -17,26 +17,15 @@
 		FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5A29D320B500A0F8F5 /* HitCell.swift */; };
 		FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E387C29D46EC600A72C90 /* ChalkView.swift */; };
 		FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = FF2E38A029D475AE00A72C90 /* Cube.rcproject */; };
-		FF2E450B29D1EF0800FDD9F5 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32E62A29D47C0D00571ADE /* DepsychView.swift */; };
-		FF68228029CDB01300A0ED3C /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF68227B29CDB00100A0ED3C /* libzapato.a */; };
-		FF68228529CDB16300A0ED3C /* ming.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF68228429CDB16300A0ED3C /* ming.cpp */; };
-		FF68229429CDCEDD00A0ED3C /* carrier.h in Headers */ = {isa = PBXBuildFile; fileRef = FF68229229CDCEDD00A0ED3C /* carrier.h */; };
-		FF68229829CDD39300A0ED3C /* mindguard.h in Headers */ = {isa = PBXBuildFile; fileRef = FF68229629CDD39300A0ED3C /* mindguard.h */; };
 		FF7EFAAB29D47E5F002DA633 /* DePsych.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */; };
 		FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFAAC29D481E9002DA633 /* HitMapView.swift */; };
+		FF9C83E62A0A8A28004A8FE6 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
+		FF9C83F52A0A8A95004A8FE6 /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */; };
+		FF9C83F82A0A9363004A8FE6 /* zapato.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83F72A0A9363004A8FE6 /* zapato.c */; };
+		FF9C83F92A0A9761004A8FE6 /* zapato.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83F72A0A9363004A8FE6 /* zapato.c */; };
 		FFAA7D0D29D8765700AB9A0D /* PsIdentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA7D0C29D8765700AB9A0D /* PsIdentView.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		FF68228129CDB01300A0ED3C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FF68226529CDABE700A0ED3C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FF68227A29CDB00100A0ED3C;
-			remoteInfo = zapato;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		FF68226D29CDAFB700A0ED3C /* CopyFiles */ = {
@@ -47,6 +36,15 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		FF9C83E92A0A8A72004A8FE6 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -65,7 +63,6 @@
 		FF2E38A029D475AE00A72C90 /* Cube.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Cube.rcproject; sourceTree = "<group>"; };
 		FF32E62A29D47C0D00571ADE /* DepsychView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepsychView.swift; sourceTree = "<group>"; };
 		FF68226F29CDAFB700A0ED3C /* ming */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ming; sourceTree = BUILT_PRODUCTS_DIR; };
-		FF68227B29CDB00100A0ED3C /* libzapato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzapato.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF68228429CDB16300A0ED3C /* ming.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ming.cpp; sourceTree = "<group>"; };
 		FF68228729CDCDF900A0ED3C /* antarctic.carrier */ = {isa = PBXFileReference; lastKnownFileType = file; path = antarctic.carrier; sourceTree = "<group>"; };
 		FF68228829CDCDF900A0ED3C /* liberati.carrier */ = {isa = PBXFileReference; lastKnownFileType = file; path = liberati.carrier; sourceTree = "<group>"; };
@@ -83,6 +80,9 @@
 		FF68229629CDD39300A0ED3C /* mindguard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mindguard.h; sourceTree = "<group>"; };
 		FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = DePsych.scnassets; sourceTree = "<group>"; };
 		FF7EFAAC29D481E9002DA633 /* HitMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitMapView.swift; sourceTree = "<group>"; };
+		FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzapato.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF9C83F62A0A9363004A8FE6 /* zapato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zapato.h; sourceTree = "<group>"; };
+		FF9C83F72A0A9363004A8FE6 /* zapato.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zapato.c; sourceTree = "<group>"; };
 		FFAA7D0C29D8765700AB9A0D /* PsIdentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsIdentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF9C83F52A0A8A95004A8FE6 /* libzapato.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,11 +99,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF68228029CDB01300A0ED3C /* libzapato.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF68227929CDB00100A0ED3C /* Frameworks */ = {
+		FF9C83E82A0A8A72004A8FE6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -163,8 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				FF68226F29CDAFB700A0ED3C /* ming */,
-				FF68227B29CDB00100A0ED3C /* libzapato.a */,
 				FF20BC4629D3180100A0F8F5 /* MindGuard.app */,
+				FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,10 +180,12 @@
 			isa = PBXGroup;
 			children = (
 				FF68228429CDB16300A0ED3C /* ming.cpp */,
-				FF68229529CDD39300A0ED3C /* mindguard.c */,
-				FF68229629CDD39300A0ED3C /* mindguard.h */,
 				FF68229129CDCEDD00A0ED3C /* carrier.c */,
 				FF68229229CDCEDD00A0ED3C /* carrier.h */,
+				FF9C83F72A0A9363004A8FE6 /* zapato.c */,
+				FF9C83F62A0A9363004A8FE6 /* zapato.h */,
+				FF68229529CDD39300A0ED3C /* mindguard.c */,
+				FF68229629CDD39300A0ED3C /* mindguard.h */,
 				FF68228629CDCDF900A0ED3C /* carriers */,
 				FF20BC4129D3150700A0F8F5 /* docs */,
 			);
@@ -208,18 +210,6 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
-
-/* Begin PBXHeadersBuildPhase section */
-		FF68227729CDB00100A0ED3C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FF68229829CDD39300A0ED3C /* mindguard.h in Headers */,
-				FF68229429CDCEDD00A0ED3C /* carrier.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		FF20BC4529D3180100A0F8F5 /* MindGuard */ = {
@@ -250,20 +240,19 @@
 			buildRules = (
 			);
 			dependencies = (
-				FF68228229CDB01300A0ED3C /* PBXTargetDependency */,
 			);
 			name = ming;
 			productName = ming;
 			productReference = FF68226F29CDAFB700A0ED3C /* ming */;
 			productType = "com.apple.product-type.tool";
 		};
-		FF68227A29CDB00100A0ED3C /* zapato */ = {
+		FF9C83EA2A0A8A72004A8FE6 /* zapato */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FF68227C29CDB00100A0ED3C /* Build configuration list for PBXNativeTarget "zapato" */;
+			buildConfigurationList = FF9C83F12A0A8A72004A8FE6 /* Build configuration list for PBXNativeTarget "zapato" */;
 			buildPhases = (
-				FF68227729CDB00100A0ED3C /* Headers */,
-				FF68227829CDB00100A0ED3C /* Sources */,
-				FF68227929CDB00100A0ED3C /* Frameworks */,
+				FF9C83E72A0A8A72004A8FE6 /* Sources */,
+				FF9C83E82A0A8A72004A8FE6 /* Frameworks */,
+				FF9C83E92A0A8A72004A8FE6 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -271,7 +260,7 @@
 			);
 			name = zapato;
 			productName = zapato;
-			productReference = FF68227B29CDB00100A0ED3C /* libzapato.a */;
+			productReference = FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -290,8 +279,8 @@
 					FF68226E29CDAFB700A0ED3C = {
 						CreatedOnToolsVersion = 14.2;
 					};
-					FF68227A29CDB00100A0ED3C = {
-						CreatedOnToolsVersion = 14.2;
+					FF9C83EA2A0A8A72004A8FE6 = {
+						CreatedOnToolsVersion = 14.3;
 					};
 				};
 			};
@@ -310,7 +299,7 @@
 			targets = (
 				FF20BC4529D3180100A0F8F5 /* MindGuard */,
 				FF68226E29CDAFB700A0ED3C /* ming */,
-				FF68227A29CDB00100A0ED3C /* zapato */,
+				FF9C83EA2A0A8A72004A8FE6 /* zapato */,
 			);
 		};
 /* End PBXProject section */
@@ -351,27 +340,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF20BC4029D314DA00A0F8F5 /* ming.cpp in Sources */,
+				FF9C83F92A0A9761004A8FE6 /* zapato.c in Sources */,
+				FF9C83E62A0A8A28004A8FE6 /* carrier.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FF68227829CDB00100A0ED3C /* Sources */ = {
+		FF9C83E72A0A8A72004A8FE6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF2E450B29D1EF0800FDD9F5 /* carrier.c in Sources */,
-				FF68228529CDB16300A0ED3C /* ming.cpp in Sources */,
+				FF9C83F82A0A9363004A8FE6 /* zapato.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FF68228229CDB01300A0ED3C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FF68227A29CDB00100A0ED3C /* zapato */;
-			targetProxy = FF68228129CDB01300A0ED3C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		FF20BC5229D3180200A0F8F5 /* Debug */ = {
@@ -438,7 +420,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -452,6 +434,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = zapato/zapato.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -516,7 +499,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -529,6 +512,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = zapato/zapato.h;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -724,7 +708,7 @@
 			};
 			name = Release;
 		};
-		FF68227D29CDB00100A0ED3C /* Debug */ = {
+		FF9C83F22A0A8A72004A8FE6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -734,61 +718,35 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		FF68227E29CDB00100A0ED3C /* Release */ = {
+		FF9C83F32A0A8A72004A8FE6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -798,50 +756,27 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5F9CYF5K3F;
 				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				EXECUTABLE_PREFIX = lib;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -875,11 +810,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FF68227C29CDB00100A0ED3C /* Build configuration list for PBXNativeTarget "zapato" */ = {
+		FF9C83F12A0A8A72004A8FE6 /* Build configuration list for PBXNativeTarget "zapato" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FF68227D29CDB00100A0ED3C /* Debug */,
-				FF68227E29CDB00100A0ED3C /* Release */,
+				FF9C83F22A0A8A72004A8FE6 /* Debug */,
+				FF9C83F32A0A8A72004A8FE6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
