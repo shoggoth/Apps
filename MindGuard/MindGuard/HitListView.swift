@@ -36,7 +36,17 @@ struct HitListView: View {
 
 struct HitView_Previews: PreviewProvider {
     static var previews: some View {
-        HitListView()
+        Group {
+            HitListView()
+                .navigationViewStyle(StackNavigationViewStyle())
+                .environment(\.colorScheme, .light)
+                .previewDisplayName("Light")
+            
+            HitListView()
+                .navigationViewStyle(StackNavigationViewStyle())
+                .environment(\.colorScheme, .dark)
+                .previewDisplayName("Dark")
+        }
     }
 }
 
