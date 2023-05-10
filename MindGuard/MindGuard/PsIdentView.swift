@@ -11,36 +11,40 @@ struct PsIdentView: View {
     @State private var sliderValue = 0.5
     
     var body: some View {
-        VStack(spacing: 23) {
-            Text("Biorythm and Eponymlog go here.")
-            Button("Vanilla Button") {
-                print("pressed")
-            }
-            Button("Capsule Button") {
-                test_zapato()
-                print("pressed")
-            }
-            .padding()
-            .background(Color(red: 0, green: 0, blue: 0.5))
-            .clipShape(Capsule())
-            Button("Capsule Button") {
-                print("pressed")
-            }
-            .buttonStyle(GreyButton())
-            Button("Capsule Button") {
-                print("pressed")
-            }
-            .buttonStyle(GrowingButton())
-            VStack(spacing: 20) {
-                Button("Button 1") {
-                }.accentColor(nil)
-                
-                Button("Button 2") {
+        ZStack {
+            Color("BGColor")
+                .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 23) {
+                Text("Biorythm and Eponymlog go here.")
+                Button("Vanilla Button") {
+                    print("pressed")
+                }
+                Button("Capsule Button") {
+                    test_zapato()
+                    print("pressed")
+                }
+                .padding()
+                .background(Color(red: 0, green: 0, blue: 0.5))
+                .clipShape(Capsule())
+                Button("Capsule Button") {
+                    print("pressed")
+                }
+                .buttonStyle(GreyButton())
+                Button("Capsule Button") {
+                    print("pressed")
+                }
+                .buttonStyle(GrowingButton())
+                VStack(spacing: 20) {
+                    Button("Button 1") {
+                    }.accentColor(nil)
                     
-                }.accentColor(.green)
-                
-                Slider(value: $sliderValue)
-            }.accentColor(.pink)
+                    Button("Button 2") {
+                        
+                    }.accentColor(.green)
+                    
+                    Slider(value: $sliderValue)
+                }.accentColor(.pink)
+            }
         }
     }
 }
