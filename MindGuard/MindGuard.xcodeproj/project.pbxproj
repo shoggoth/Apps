@@ -13,8 +13,6 @@
 		FF20BC4D29D3180200A0F8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */; };
 		FF20BC5029D3180200A0F8F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */; };
 		FF20BC5529D3192600A0F8F5 /* HitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5429D3192600A0F8F5 /* HitListView.swift */; };
-		FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5629D31C2600A0F8F5 /* Coin.swift */; };
-		FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5A29D320B500A0F8F5 /* HitCell.swift */; };
 		FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E387C29D46EC600A72C90 /* ChalkView.swift */; };
 		FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = FF2E38A029D475AE00A72C90 /* Cube.rcproject */; };
 		FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32E62A29D47C0D00571ADE /* DepsychView.swift */; };
@@ -24,6 +22,8 @@
 		FF9C83F52A0A8A95004A8FE6 /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */; };
 		FF9C83F82A0A9363004A8FE6 /* zapato.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83F72A0A9363004A8FE6 /* zapato.c */; };
 		FF9C83F92A0A9761004A8FE6 /* zapato.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83F72A0A9363004A8FE6 /* zapato.c */; };
+		FF9C83FC2A0BC5A4004A8FE6 /* Hit.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83FA2A0BC5A4004A8FE6 /* Hit.xcdatamodeld */; };
+		FF9C83FF2A0BC8A7004A8FE6 /* HitDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83FE2A0BC8A7004A8FE6 /* HitDataController.swift */; };
 		FFAA7D0D29D8765700AB9A0D /* PsIdentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFAA7D0C29D8765700AB9A0D /* PsIdentView.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +83,9 @@
 		FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzapato.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9C83F62A0A9363004A8FE6 /* zapato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zapato.h; sourceTree = "<group>"; };
 		FF9C83F72A0A9363004A8FE6 /* zapato.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zapato.c; sourceTree = "<group>"; };
+		FF9C83FB2A0BC5A4004A8FE6 /* Hit.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hit.xcdatamodel; sourceTree = "<group>"; };
+		FF9C83FD2A0BC6DE004A8FE6 /* MindGuard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MindGuard.entitlements; sourceTree = "<group>"; };
+		FF9C83FE2A0BC8A7004A8FE6 /* HitDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitDataController.swift; sourceTree = "<group>"; };
 		FFAA7D0C29D8765700AB9A0D /* PsIdentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PsIdentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -128,6 +131,7 @@
 				FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */,
 				FF2E38A029D475AE00A72C90 /* Cube.rcproject */,
 				FF20BC5929D31E7600A0F8F5 /* Info.plist */,
+				FF9C83FD2A0BC6DE004A8FE6 /* MindGuard.entitlements */,
 				FF20BC4E29D3180200A0F8F5 /* Preview Content */,
 			);
 			path = MindGuard;
@@ -144,7 +148,9 @@
 		FF20BC5829D31C2A00A0F8F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FF9C83FA2A0BC5A4004A8FE6 /* Hit.xcdatamodeld */,
 				FF20BC5629D31C2600A0F8F5 /* Coin.swift */,
+				FF9C83FE2A0BC8A7004A8FE6 /* HitDataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,15 +329,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */,
-				FF20BC5B29D320B500A0F8F5 /* HitCell.swift in Sources */,
 				FF20BC5529D3192600A0F8F5 /* HitListView.swift in Sources */,
 				FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */,
 				FFAA7D0D29D8765700AB9A0D /* PsIdentView.swift in Sources */,
 				FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */,
-				FF20BC5729D31C2600A0F8F5 /* Coin.swift in Sources */,
 				FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */,
+				FF9C83FC2A0BC5A4004A8FE6 /* Hit.xcdatamodeld in Sources */,
 				FF20BC4929D3180100A0F8F5 /* MindGuardApp.swift in Sources */,
 				FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */,
+				FF9C83FF2A0BC8A7004A8FE6 /* HitDataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +396,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = MindGuard/MindGuard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -416,6 +423,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MindGuard/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Gimme Camera";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -475,6 +483,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = MindGuard/MindGuard.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
@@ -495,6 +504,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MindGuard/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Gimme Camera";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -820,6 +830,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FF9C83FA2A0BC5A4004A8FE6 /* Hit.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FF9C83FB2A0BC5A4004A8FE6 /* Hit.xcdatamodel */,
+			);
+			currentVersion = FF9C83FB2A0BC5A4004A8FE6 /* Hit.xcdatamodel */;
+			path = Hit.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FF68226529CDABE700A0ED3C /* Project object */;
 }

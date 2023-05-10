@@ -12,6 +12,7 @@ struct MindGuardApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environment(\.managedObjectContext, HitDataController.shared.container.viewContext)
         }
     }
 }
