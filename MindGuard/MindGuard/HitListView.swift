@@ -43,11 +43,13 @@ struct HitView_Previews: PreviewProvider {
             HitListView()
                 .navigationViewStyle(StackNavigationViewStyle())
                 .environment(\.colorScheme, .light)
+                .environment(\.managedObjectContext, HitDataController.shared.container.viewContext)
                 .previewDisplayName("Light")
             
             HitListView()
                 .navigationViewStyle(StackNavigationViewStyle())
                 .environment(\.colorScheme, .dark)
+                .environment(\.managedObjectContext, HitDataController.shared.container.viewContext)
                 .previewDisplayName("Dark")
         }
     }
