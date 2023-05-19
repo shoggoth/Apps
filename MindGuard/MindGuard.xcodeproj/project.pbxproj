@@ -13,7 +13,6 @@
 		FF20BC4D29D3180200A0F8F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */; };
 		FF20BC5029D3180200A0F8F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF20BC4F29D3180200A0F8F5 /* Preview Assets.xcassets */; };
 		FF20BC5529D3192600A0F8F5 /* HitListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF20BC5429D3192600A0F8F5 /* HitListView.swift */; };
-		FF25CBFB2A165E34000E9E97 /* Map in Frameworks */ = {isa = PBXBuildFile; productRef = FF25CBFA2A165E34000E9E97 /* Map */; };
 		FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2E387C29D46EC600A72C90 /* ChalkView.swift */; };
 		FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = FF2E38A029D475AE00A72C90 /* Cube.rcproject */; };
 		FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32E62A29D47C0D00571ADE /* DepsychView.swift */; };
@@ -96,7 +95,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF9C83F52A0A8A95004A8FE6 /* libzapato.a in Frameworks */,
-				FF25CBFB2A165E34000E9E97 /* Map in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +232,6 @@
 			);
 			name = MindGuard;
 			packageProductDependencies = (
-				FF25CBFA2A165E34000E9E97 /* Map */,
 			);
 			productName = MindGuard;
 			productReference = FF20BC4629D3180100A0F8F5 /* MindGuard.app */;
@@ -305,7 +302,6 @@
 			);
 			mainGroup = FF68226429CDABE700A0ED3C;
 			packageReferences = (
-				FF25CBF92A165E34000E9E97 /* XCRemoteSwiftPackageReference "Map" */,
 			);
 			productRefGroup = FF68227029CDAFB700A0ED3C /* Products */;
 			projectDirPath = "";
@@ -838,25 +834,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		FF25CBF92A165E34000E9E97 /* XCRemoteSwiftPackageReference "Map" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/pauljohanneskraft/Map?ref=iosexample.com";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		FF25CBFA2A165E34000E9E97 /* Map */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FF25CBF92A165E34000E9E97 /* XCRemoteSwiftPackageReference "Map" */;
-			productName = Map;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		FF9C83FA2A0BC5A4004A8FE6 /* Hit.xcdatamodeld */ = {

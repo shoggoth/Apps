@@ -5,7 +5,6 @@
 //  Created by Richard Henry on 29/03/2023.
 //
 
-import Map
 import SwiftUI
 import MapKit
 
@@ -14,13 +13,7 @@ struct HitMapView: View {
 
     var body: some View {
         VStack {
-            Map(coordinateRegion: $region, type: .standard)
-                .mapKey(1)
-                .overlay(alignment: .topLeading) {
-                    MapScale(key: 1, alignment: .leading, visibility: .visible)
-                        .fixedSize()
-                        .padding(12)
-                }
+            Map(coordinateRegion: $region)
         }
         .ignoresSafeArea(.all, edges: [.top, .trailing, .leading])
     }
