@@ -11,15 +11,28 @@ import MapKit
 struct HitMapView: View {
     @StateObject var locationManager = LocationManager.shared
     @State private var trackingMode: MapUserTrackingMode = .follow
-    @State private var sheetPresented = true
+    @State private var sheetPresented = false
 
     var body: some View {
-        VStack {
-            Map(coordinateRegion: $locationManager.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackingMode)
-                .sheet(isPresented: $sheetPresented) {
-                    Text("Detail")
-                        .presentationDetents([.medium, .large])
+        ZStack {
+            VStack {
+                Map(coordinateRegion: $locationManager.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackingMode)
+                    .sheet(isPresented: $sheetPresented) {
+                        Text("Detail")
+                            .presentationDetents([.medium, .large])
+                    }
+            }
+            VStack(alignment: .leading) {
+                HStack {
+                    Button("Scan") {
+                        sheetPresented.toggle()
+                    }
+                    .padding(.top, 60)
+                    .padding(.leading, 7)
+                    Spacer()
                 }
+                Spacer()
+            }
         }
         .ignoresSafeArea(.all, edges: [.top, .trailing, .leading])
     }
