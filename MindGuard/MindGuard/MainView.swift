@@ -15,7 +15,7 @@ struct MainView: View {
         case hitList
         case psIdent
     }
-    @State private var selectedTab = Tag.psIdent
+    @State private var selectedTab = Tag.map
     
     var body: some View {
         TabView(selection: $selectedTab) {
