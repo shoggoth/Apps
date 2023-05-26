@@ -11,10 +11,15 @@ import MapKit
 struct HitMapView: View {
     @StateObject var locationManager = LocationManager.shared
     @State private var trackingMode: MapUserTrackingMode = .follow
+    @State private var sheetPresented = true
 
     var body: some View {
         VStack {
             Map(coordinateRegion: $locationManager.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $trackingMode)
+                .sheet(isPresented: $sheetPresented) {
+                    Text("Detail")
+                        .presentationDetents([.medium, .large])
+                }
         }
         .ignoresSafeArea(.all, edges: [.top, .trailing, .leading])
     }
