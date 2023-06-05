@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
     private enum Tag {
         case map
         case depsych
@@ -15,7 +16,7 @@ struct MainView: View {
         case hitList
         case psIdent
     }
-    @State private var selectedTab = Tag.map
+    @State private var selectedTab = Tag.psIdent
     
     var body: some View {
         TabView(selection: $selectedTab) {

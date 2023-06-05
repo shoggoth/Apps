@@ -18,6 +18,8 @@
 		FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32E62A29D47C0D00571ADE /* DepsychView.swift */; };
 		FF7EFAAB29D47E5F002DA633 /* DePsych.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */; };
 		FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFAAC29D481E9002DA633 /* HitMapView.swift */; };
+		FF9B0AF12A2E111B00C79A1F /* MetaballView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B0AF02A2E111B00C79A1F /* MetaballView.swift */; };
+		FF9B0AF32A2E11FB00C79A1F /* ThemeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B0AF22A2E11FB00C79A1F /* ThemeButtonView.swift */; };
 		FF9C83E62A0A8A28004A8FE6 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF9C83F52A0A8A95004A8FE6 /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */; };
 		FF9C83F82A0A9363004A8FE6 /* zapato.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83F72A0A9363004A8FE6 /* zapato.c */; };
@@ -80,6 +82,8 @@
 		FF68229629CDD39300A0ED3C /* mindguard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mindguard.h; sourceTree = "<group>"; };
 		FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = DePsych.scnassets; sourceTree = "<group>"; };
 		FF7EFAAC29D481E9002DA633 /* HitMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitMapView.swift; sourceTree = "<group>"; };
+		FF9B0AF02A2E111B00C79A1F /* MetaballView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaballView.swift; sourceTree = "<group>"; };
+		FF9B0AF22A2E11FB00C79A1F /* ThemeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButtonView.swift; sourceTree = "<group>"; };
 		FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libzapato.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF9C83F62A0A9363004A8FE6 /* zapato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zapato.h; sourceTree = "<group>"; };
 		FF9C83F72A0A9363004A8FE6 /* zapato.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zapato.c; sourceTree = "<group>"; };
@@ -124,8 +128,10 @@
 				FF32E62A29D47C0D00571ADE /* DepsychView.swift */,
 				FF7EFAAC29D481E9002DA633 /* HitMapView.swift */,
 				FF20BC5429D3192600A0F8F5 /* HitListView.swift */,
-				FFAA7D0C29D8765700AB9A0D /* PsIdentView.swift */,
 				FF20BC5A29D320B500A0F8F5 /* HitCell.swift */,
+				FFAA7D0C29D8765700AB9A0D /* PsIdentView.swift */,
+				FF9B0AF22A2E11FB00C79A1F /* ThemeButtonView.swift */,
+				FF9B0AF02A2E111B00C79A1F /* MetaballView.swift */,
 				FF20BC5829D31C2A00A0F8F5 /* Model */,
 				FF20BC4C29D3180200A0F8F5 /* Assets.xcassets */,
 				FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */,
@@ -334,10 +340,12 @@
 			files = (
 				FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */,
 				FF20BC5529D3192600A0F8F5 /* HitListView.swift in Sources */,
+				FF9B0AF32A2E11FB00C79A1F /* ThemeButtonView.swift in Sources */,
 				FF2E387D29D46EC600A72C90 /* ChalkView.swift in Sources */,
 				FFAA7D0D29D8765700AB9A0D /* PsIdentView.swift in Sources */,
 				FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */,
 				FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */,
+				FF9B0AF12A2E111B00C79A1F /* MetaballView.swift in Sources */,
 				FF9C83FC2A0BC5A4004A8FE6 /* Hit.xcdatamodeld in Sources */,
 				FF20BC4929D3180100A0F8F5 /* MindGuardApp.swift in Sources */,
 				FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */,
