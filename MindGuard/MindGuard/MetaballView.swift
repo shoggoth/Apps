@@ -36,10 +36,8 @@ extension View {
 }
 
 struct MetaballView: View {
-    
     var body: some View {
         GeometryReader {
-            
             MetaballScrollView(safeAreaInsets: $0.safeAreaInsets)
                 .ignoresSafeArea()
         }
@@ -148,10 +146,10 @@ struct MetaballView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             MetaballView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone 14"))
+                .previewDevice(PreviewDevice(rawValue: "iPhone Xs"))
                 .previewDisplayName("Notch")
             MetaballView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
+                .previewDevice(PreviewDevice(rawValue: "iPhone 15 Pro"))
                 .previewDisplayName("Island")
         }
     }

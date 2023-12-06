@@ -18,8 +18,8 @@
 		FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF32E62A29D47C0D00571ADE /* DepsychView.swift */; };
 		FF7EFAAB29D47E5F002DA633 /* DePsych.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = FF7EFAAA29D47E5F002DA633 /* DePsych.scnassets */; };
 		FF7EFAAD29D481E9002DA633 /* HitMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7EFAAC29D481E9002DA633 /* HitMapView.swift */; };
-		FF9B0AF12A2E111B00C79A1F /* MetaballView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B0AF02A2E111B00C79A1F /* MetaballView.swift */; };
 		FF9B0AF32A2E11FB00C79A1F /* ThemeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B0AF22A2E11FB00C79A1F /* ThemeButtonView.swift */; };
+		FF9B0AF42A2E146700C79A1F /* MetaballView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9B0AF02A2E111B00C79A1F /* MetaballView.swift */; };
 		FF9C83E62A0A8A28004A8FE6 /* carrier.c in Sources */ = {isa = PBXBuildFile; fileRef = FF68229129CDCEDD00A0ED3C /* carrier.c */; };
 		FF9C83F52A0A8A95004A8FE6 /* libzapato.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FF9C83EB2A0A8A72004A8FE6 /* libzapato.a */; };
 		FF9C83F82A0A9363004A8FE6 /* zapato.c in Sources */ = {isa = PBXBuildFile; fileRef = FF9C83F72A0A9363004A8FE6 /* zapato.c */; };
@@ -345,10 +345,10 @@
 				FFAA7D0D29D8765700AB9A0D /* PsIdentView.swift in Sources */,
 				FF20BC4B29D3180100A0F8F5 /* MainView.swift in Sources */,
 				FF2E38A129D475AE00A72C90 /* Cube.rcproject in Sources */,
-				FF9B0AF12A2E111B00C79A1F /* MetaballView.swift in Sources */,
 				FF9C83FC2A0BC5A4004A8FE6 /* Hit.xcdatamodeld in Sources */,
 				FF20BC4929D3180100A0F8F5 /* MindGuardApp.swift in Sources */,
 				FF32E62B29D47C0D00571ADE /* DepsychView.swift in Sources */,
+				FF9B0AF42A2E146700C79A1F /* MetaballView.swift in Sources */,
 				FF9C83FF2A0BC8A7004A8FE6 /* HitDataController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
